@@ -3,4 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <color name="colorGray">#e4e4e4</color>
+    <color name="colorDarkGray">#b8b8b8</color>
+    <color name="colorMainAPP">#293868</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="orange">#FFA726</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="black">#000000</color>
+    <color name="blue">#3D4D88</color>
+    <color name="text_color">#424242</color>
+    <color name="colorFullDarkGray">#9E9E9E</color>
+    <color name="light_orange">#FFE0B2</color>
+    <color name="yellow">#ffd11a</color>
 </resources>
