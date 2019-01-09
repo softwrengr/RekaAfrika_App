@@ -44,6 +44,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        getActivity().setTitle("Products");
         gvProducts = view.findViewById(R.id.gridView);
         initUI();
         return view;

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,7 +65,7 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.tvTitle = convertView.findViewById(R.id.tv_item_title);
         viewHolder.ivItem = convertView.findViewById(R.id.iv_item_view);
         viewHolder.tvPrice = convertView.findViewById(R.id.tv_item_price);
-        viewHolder.layout_product = convertView.findViewById(R.id.layout_item);
+        viewHolder.layout_product = convertView.findViewById(R.id.layout);
 
         viewHolder.tvTitle.setText(model.getTitle());
         viewHolder.tvPrice.setText(model.getPrice());
@@ -73,7 +74,8 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.layout_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragment(context,new ProductDetailsFragment());
+                GeneralUtils.putStringValueInEditor(context,"id",model.getProduct_id());
+                GeneralUtils.connectFragmentWithBack(context,new ProductDetailsFragment());
             }
         });
 
@@ -86,6 +88,6 @@ public class ProductAdapter  extends BaseAdapter {
     private class MyViewHolder {
         ImageView ivItem;
         TextView tvTitle,tvPrice;
-        FrameLayout layout_product;
+        LinearLayout layout_product;
     }
 }

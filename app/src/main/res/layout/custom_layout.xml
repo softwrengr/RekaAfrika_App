@@ -6,56 +6,61 @@
     android:orientation="vertical"
     android:layout_marginTop="10sp">
 
-    <FrameLayout
-        android:id="@+id/layout_item"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:padding="2sp"
-        android:background="@drawable/item_broder">
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="210sp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_width="155sp"
+            android:layout_height="210sp"
+            android:orientation="vertical"
+            android:background="#fff"
+            android:padding="2sp"
+            android:layout_marginTop="5sp">
             <ImageView
                 android:id="@+id/iv_item_view"
                 android:layout_width="match_parent"
-                android:layout_height="180sp"
-                />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="42sp"
-            android:layout_gravity="bottom"
-            android:orientation="vertical"
-            android:layout_marginRight="5sp"
-            android:layout_marginLeft="5sp"
-            android:background="@drawable/border"
-            android:layout_marginBottom="2sp"
-            android:gravity="center">
-
+                android:layout_height="120sp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2sp"
+                android:src="@color/colorGray"/>
 
             <TextView
                 android:id="@+id/tv_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2sp"
-                android:maxLines="1"
-                android:text="title"
-                android:textColor="@color/colorWhite"/>
+                android:layout_below="@id/iv_item_view"
+                android:layout_marginLeft="10sp"
+                android:textColor="@color/black"
+                android:layout_marginRight="3sp"
+                android:maxLines="2"
+                android:layout_marginTop="5sp"
+                android:textStyle="bold"
+                android:text="Category Name"/>
 
             <TextView
                 android:id="@+id/tv_item_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$50"
-                android:layout_marginTop="2sp"
-                android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:text="price"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:paddingLeft="3sp"
+                android:paddingRight="3sp"
+                android:layout_marginBottom="25sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10sp"/>
 
-    </FrameLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 
 

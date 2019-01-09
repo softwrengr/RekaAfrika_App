@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ import rekaafrika.techease.com.reka.adapters.ProductAdapter;
 import rekaafrika.techease.com.reka.dateModels.AllProductsModel;
 import rekaafrika.techease.com.reka.utilities.AlertUtils;
 import rekaafrika.techease.com.reka.utilities.Config;
+import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 
 public class ProductDetailsFragment extends Fragment {
     android.support.v7.app.AlertDialog alertDialog;
@@ -45,6 +47,8 @@ public class ProductDetailsFragment extends Fragment {
     TextView tvProductPrice;
     @BindView(R.id.product_descp)
     TextView tvProductDescp;
+    @BindView(R.id.btnAddCart)
+    Button btnAddCart;
     View view;
 
     @Override
@@ -52,6 +56,7 @@ public class ProductDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_product_details, container, false);
+        getActivity().setTitle("Product Detail");
         initUI();
         return view;
     }
@@ -61,6 +66,13 @@ public class ProductDetailsFragment extends Fragment {
         alertDialog = AlertUtils.createProgressDialog(getActivity());
         alertDialog.show();
         productDetail();
+
+        btnAddCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new AddCartFragment());
+            }
+        });
     }
 
     private void productDetail() {
@@ -69,15 +81,17 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 try {
-                    Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+
                     alertDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                         JSONObject itemObject = jsonArray.getJSONObject(0);
 
-                        tvProductName.setText("khan");
-//                        tvProductPrice.setText(itemObject.getString("price"));
-//                        tvProductDescp.setText(itemObject.getString("description"));
+
+                        Picasso.get().load(itemObject.getString("image")).into(ivProduct);
+                        tvProductName.setText(itemObject.getString("title"));
+                        tvProductPrice.setText("PRICE "+itemObject.getString("price"));
+                        tvProductDescp.setText(itemObject.getString("description"));
 
 
 
@@ -100,7 +114,7 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("id", "13884");
+                params.put("id", GeneralUtils.getID(getActivity()));
                 return params;
             }
         };
