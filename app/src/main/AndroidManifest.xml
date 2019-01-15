@@ -14,9 +14,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.activities.MainActivity"
-            android:noHistory="true">
-        </activity>
-        <activity android:name=".views.activities.SplashActivity"
+            android:noHistory="true"></activity>
+        <activity
+            android:name=".views.activities.SplashActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".views.activities.NavigationDrawerActivity"
+            android:label="@string/title_activity_navigation_drawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

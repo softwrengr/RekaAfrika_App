@@ -1,7 +1,13 @@
 package rekaafrika.techease.com.reka.dateModels;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+
 public class AllProductsModel {
+
     public String product_id,title,price,image;
+    public  ArrayList<AllProductsModel> arrayList;
 
     public String getProduct_id() {
         return product_id;
@@ -33,5 +39,13 @@ public class AllProductsModel {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public ArrayList<AllProductsModel> getArrayList() {
+        return arrayList;
+    }
+
+    public void setArrayList(ArrayList<AllProductsModel> arrayList) {
+        this.arrayList = arrayList;
     }
 }

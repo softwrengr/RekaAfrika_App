@@ -2,6 +2,7 @@ package rekaafrika.techease.com.reka.views.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     GridView gvProducts;
     ArrayList<AllProductsModel> productsModelArrayList;
     ProductAdapter productAdapter;
+    public static ArrayList<AllProductsModel> arrayList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,17 +73,28 @@ public class HomeFragment extends Fragment {
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject itemObject = jsonArray.getJSONObject(i);
+                        AllProductsModel model = new AllProductsModel();
 
                         String strProductID = itemObject.getString("product_id");
                         String strTitle = itemObject.getString("title");
                         String strPrice = itemObject.getString("price");
                         String strImage = itemObject.getString("image");
 
-                        AllProductsModel model = new AllProductsModel();
+                        JSONArray array = itemObject.getJSONArray("category");
+                        for(int j=0;j<array.length();j++){
+                            JSONObject object = array.getJSONObject(j);
+                            String categoryName = object.getString("name");
+                            arrayList.add(model);
+                            model.setArrayList(arrayList);
+
+                        }
+
                         model.setProduct_id(strProductID);
                         model.setTitle(strTitle);
                         model.setPrice(strPrice);
                         model.setImage(strImage);
+
+
 
                         productsModelArrayList.add(model);
                         ProductAdapter productAdapter;

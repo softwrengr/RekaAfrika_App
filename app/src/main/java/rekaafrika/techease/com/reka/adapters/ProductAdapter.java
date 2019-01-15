@@ -1,6 +1,8 @@
 package rekaafrika.techease.com.reka.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.dateModels.AllProductsModel;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
+import rekaafrika.techease.com.reka.views.fragments.CategoriesFragment;
 import rekaafrika.techease.com.reka.views.fragments.ProductDetailsFragment;
 
 public class ProductAdapter  extends BaseAdapter {
@@ -71,11 +74,18 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.tvPrice.setText(model.getPrice());
         Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
 
+
         viewHolder.layout_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Bundle bundle = new Bundle();
+//                bundle.putStringArrayList("array",model.getArrayList());
                 GeneralUtils.putStringValueInEditor(context,"id",model.getProduct_id());
-                GeneralUtils.connectFragmentWithBack(context,new ProductDetailsFragment());
+                GeneralUtils.connectFragmentWithBack(context,new CategoriesFragment());
+                CategoriesFragment.model = model;
+
+               // da de che click ke
+
             }
         });
 

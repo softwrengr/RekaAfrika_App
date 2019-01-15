@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="BAGS">
+        <menu>
+            <item
+                android:id="@+id/nav_duffer_bag"
+                android:icon="@drawable/ic_menu_share"
+                android:title="DUFFEL BAGS" />
+            <item
+                android:id="@+id/nav_shoulder_bags"
+                android:icon="@drawable/ic_menu_send"
+                android:title="SHOULDER BAGS" />
+            <item
+                android:id="@+id/nav_back_packs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="SHOULDER BAGS" />
+            <item
+                android:id="@+id/nav_beauty"
+                android:icon="@drawable/ic_menu_send"
+                android:title="BEAUTY AND TOILETRY" />
+        </menu>
+    </item>
+
+  <item
+      android:title="FASHION">
+      <menu>
+          <item
+              android:id="@+id/nav_men"
+              android:icon="@drawable/ic_menu_camera"
+              android:title="MEN" />
+          <item
+              android:id="@+id/nav_women"
+              android:icon="@drawable/ic_menu_gallery"
+              android:title="WOMEN" />
+
+      </menu>
+  </item>
+
+    <item android:title="HOMEWARE">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="BATHROOM" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="BEDROOM" />
+            <item
+                android:id="@+id/nav_setting_room"
+                android:icon="@drawable/ic_menu_send"
+                android:title="SETTING ROOM" />
+            <item
+                android:id="@+id/nav_kitching"
+                android:icon="@drawable/ic_menu_send"
+                android:title="KITCHING WARE" />
+        </menu>
+    </item>
+
+</menu>
