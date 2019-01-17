@@ -27,6 +27,11 @@ public class GeneralUtils {
         return fragment;
     }
 
+    public static Fragment connectDrawerFragmentWithBack(Context activity, Fragment fragment){
+        ((AppCompatActivity)activity).getSupportFragmentManager().beginTransaction().replace(R.id.drawer_container,fragment).addToBackStack("").commit();
+        return fragment;
+    }
+
 
     public static SharedPreferences.Editor putStringValueInEditor(Context context, String key, String value) {
         sharedPreferences = getSharedPreferences(context);
@@ -42,6 +47,10 @@ public class GeneralUtils {
 
 
     public static String getID(Context context) {
-        return getSharedPreferences(context).getString("id", "");
+        return getSharedPreferences(context).getString("product_id", "");
+    }
+
+    public static String getSlug(Context context) {
+        return getSharedPreferences(context).getString("slug", "");
     }
 }

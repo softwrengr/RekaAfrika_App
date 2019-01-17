@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public class AllProductsModel {
 
-    public String product_id,title,price,image;
-    public  ArrayList<AllProductsModel> arrayList;
+    public String product_id,title,price,image,categoryName;
+    public  ArrayList<String> arrayList;
+    public JSONArray jsonArray;
 
     public String getProduct_id() {
         return product_id;
@@ -41,11 +42,27 @@ public class AllProductsModel {
         this.image = image;
     }
 
-    public ArrayList<AllProductsModel> getArrayList() {
+    public ArrayList<String> getArrayList() {
         return arrayList;
     }
 
-    public void setArrayList(ArrayList<AllProductsModel> arrayList) {
+    public void setArrayList(ArrayList<String> arrayList) {
         this.arrayList = arrayList;
+    }
+
+    public JSONArray getJsonArray() {
+        return jsonArray;
+    }
+
+    public void setJsonArray(JSONArray jsonArray) {
+        this.jsonArray = jsonArray;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

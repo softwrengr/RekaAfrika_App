@@ -1,9 +1,6 @@
 package rekaafrika.techease.com.reka.views.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,7 +12,7 @@ import android.view.MenuItem;
 
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
-import rekaafrika.techease.com.reka.views.fragments.HomeFragment;
+import rekaafrika.techease.com.reka.views.fragments.CategoriesFragment;
 
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,7 +24,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        GeneralUtils.connectDrawerFragment(this,new HomeFragment());
+        GeneralUtils.connectDrawerFragment(this,new CategoriesFragment());
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

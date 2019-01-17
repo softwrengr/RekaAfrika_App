@@ -31,15 +31,16 @@ import rekaafrika.techease.com.reka.adapters.ProductAdapter;
 import rekaafrika.techease.com.reka.dateModels.AllProductsModel;
 import rekaafrika.techease.com.reka.utilities.AlertUtils;
 import rekaafrika.techease.com.reka.utilities.Config;
+import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 
 
-public class HomeFragment extends Fragment {
+public class ProductsFragment extends Fragment {
     android.support.v7.app.AlertDialog alertDialog;
     View view;
     GridView gvProducts;
     ArrayList<AllProductsModel> productsModelArrayList;
     ProductAdapter productAdapter;
-    public static ArrayList<AllProductsModel> arrayList = new ArrayList<>();
+    public static ArrayList<String> arrayList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +64,7 @@ public class HomeFragment extends Fragment {
 
 
     private void getLiveRates() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.ALL_PRODUCTS
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.CATEGORY_PRODUCT
                 , new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -80,14 +81,6 @@ public class HomeFragment extends Fragment {
                         String strPrice = itemObject.getString("price");
                         String strImage = itemObject.getString("image");
 
-                        JSONArray array = itemObject.getJSONArray("category");
-                        for(int j=0;j<array.length();j++){
-                            JSONObject object = array.getJSONObject(j);
-                            String categoryName = object.getString("name");
-                            arrayList.add(model);
-                            model.setArrayList(arrayList);
-
-                        }
 
                         model.setProduct_id(strProductID);
                         model.setTitle(strTitle);
@@ -111,7 +104,7 @@ public class HomeFragment extends Fragment {
                 }
             }
 
-        }, new com.android.volley.Response.ErrorListener() {
+        },  new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 alertDialog.dismiss();
@@ -119,14 +112,12 @@ public class HomeFragment extends Fragment {
 
             }
         }) {
-
-
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                return headers;
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("category", GeneralUtils.getSlug(getActivity()));
+                return params;
             }
-
         };
         RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,

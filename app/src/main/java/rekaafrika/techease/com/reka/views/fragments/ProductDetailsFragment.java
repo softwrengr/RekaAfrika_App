@@ -72,7 +72,7 @@ public class ProductDetailsFragment extends Fragment {
         btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new AddCartFragment());
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new AddCartFragment());
             }
         });
 

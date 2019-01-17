@@ -1,14 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".views.fragments.CategoriesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="220sp"
+            android:background="@drawable/shoping">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:layout_marginTop="30sp"
+                android:layout_centerHorizontal="true"
+                android:typeface="sans" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="160sp"
+            android:background="@drawable/back_shape"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:background="@drawable/back_shape"
+                android:layout_marginTop="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_height="60sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHOP"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10sp"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/category_bags"
+                android:layout_below="@id/layout"
+                android:layout_width="160sp"
+                android:layout_height="160sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/border"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_bag"
+                    android:layout_width="match_parent"
+                    android:layout_height="120sp"
+                    android:layout_marginTop="2sp"/>
+
+                <TextView
+                    android:id="@+id/tv_category_bags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="category"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:typeface="sans"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/category_fashion"
+                android:layout_below="@id/layout"
+                android:layout_width="160sp"
+                android:layout_height="160sp"
+                android:background="@drawable/border"
+                android:layout_toRightOf="@id/category_bags"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/iv_fashion"
+                    android:layout_width="match_parent"
+                    android:layout_height="120sp"
+                    android:layout_marginTop="2sp"/>
+
+                <TextView
+                    android:id="@+id/tv_category_fashion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="category"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:typeface="sans"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/category_homeware"
+                android:layout_width="160sp"
+                android:layout_height="160sp"
+                android:background="@drawable/border"
+                android:layout_marginTop="5sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_below="@id/category_bags"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_homeware"
+                    android:layout_width="match_parent"
+                    android:layout_height="120sp"
+                    android:layout_marginTop="2sp"/>
+
+                <TextView
+                    android:id="@+id/tv_category_homeware"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="category"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:typeface="sans"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+
+</LinearLayout>
