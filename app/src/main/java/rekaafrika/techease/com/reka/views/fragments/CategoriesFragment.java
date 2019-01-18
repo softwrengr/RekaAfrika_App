@@ -90,14 +90,14 @@ public class CategoriesFragment extends Fragment {
         layoutFashion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle.putInt("no", 2);
+                bundle.putInt("no", 3);
                 GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new CategoryItemsFragment()).setArguments(bundle);
             }
         });
         layoutHomeware.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle.putInt("no", 4);
+                bundle.putInt("no", 5);
                 GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new CategoryItemsFragment()).setArguments(bundle);
             }
         });
@@ -114,8 +114,8 @@ public class CategoriesFragment extends Fragment {
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
 
                     JSONObject objectBag = jsonArray.getJSONObject(1);
-                    JSONObject objectFashion = jsonArray.getJSONObject(2);
-                    JSONObject objectHomeware = jsonArray.getJSONObject(4);
+                    JSONObject objectFashion = jsonArray.getJSONObject(3);
+                    JSONObject objectHomeware = jsonArray.getJSONObject(5);
 
                     String strBag = objectBag.getString("name");
                     String strFashion = objectFashion.getString("name");

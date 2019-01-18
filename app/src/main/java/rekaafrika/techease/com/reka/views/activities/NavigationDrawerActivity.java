@@ -1,5 +1,6 @@
 package rekaafrika.techease.com.reka.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
+import rekaafrika.techease.com.reka.views.fragments.AddCartFragment;
 import rekaafrika.techease.com.reka.views.fragments.CategoriesFragment;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -77,6 +79,12 @@ public class NavigationDrawerActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_women) {
 
+        }
+        else if (id == R.id.nav_home) {
+         startActivity(new Intent(this,NavigationDrawerActivity.class));
+        }
+        else if(id == R.id.nav_wishlist){
+            GeneralUtils.connectDrawerFragmentWithBack(this,new AddCartFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

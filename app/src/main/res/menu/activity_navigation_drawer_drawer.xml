@@ -5,6 +5,12 @@
 
     <item android:title="">
         <menu>
+
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Home" />
+
             <item
                 android:id="@+id/nav_duffer_bag"
                 android:icon="@drawable/ic_menu_share"
@@ -18,7 +24,7 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="Orders" />
             <item
-                android:id="@+id/nav_beauty"
+                android:id="@+id/nav_wishlist"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Wishlist" />
 

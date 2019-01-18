@@ -35,6 +35,7 @@ import butterknife.ButterKnife;
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.adapters.ProductAdapter;
 import rekaafrika.techease.com.reka.dateModels.AllProductsModel;
+import rekaafrika.techease.com.reka.helpers.ShopCrud;
 import rekaafrika.techease.com.reka.utilities.AlertUtils;
 import rekaafrika.techease.com.reka.utilities.Config;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
@@ -53,12 +54,16 @@ public class ProductDetailsFragment extends Fragment {
     Button btnAddCart;
     View view;
 
+    ShopCrud shopCrud;
+    String strProductID,strProductName,strProductImage,strProductPrice;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_product_details, container, false);
         getActivity().setTitle("Product Detail");
+        shopCrud = new ShopCrud(getActivity());
         initUI();
         return view;
     }
@@ -72,6 +77,7 @@ public class ProductDetailsFragment extends Fragment {
         btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                shopCrud.insertSingleProduct(strProductID,strProductName,strProductImage,strProductPrice);
                 GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new AddCartFragment());
             }
         });
@@ -90,10 +96,14 @@ public class ProductDetailsFragment extends Fragment {
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                         JSONObject itemObject = jsonArray.getJSONObject(0);
 
+                        strProductID = itemObject.getString("product_id");
+                        strProductImage = itemObject.getString("image");
+                        strProductName = itemObject.getString("title");
+                        strProductPrice = itemObject.getString("price");
 
-                        Picasso.get().load(itemObject.getString("image")).into(ivProduct);
-                        tvProductName.setText(itemObject.getString("title"));
-                        tvProductPrice.setText("PRICE "+itemObject.getString("price"));
+                        Picasso.get().load(strProductImage).into(ivProduct);
+                        tvProductName.setText(strProductName);
+                        tvProductPrice.setText("PRICE "+strProductPrice);
                         tvProductDescp.setText(itemObject.getString("description"));
 
 
