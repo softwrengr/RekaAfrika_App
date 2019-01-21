@@ -27,7 +27,7 @@
             <ImageView
                 android:id="@+id/iv_item_view"
                 android:layout_width="match_parent"
-                android:layout_height="120sp"
+                android:layout_height="110sp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
                 android:layout_centerHorizontal="true"
@@ -41,7 +41,6 @@
                 android:layout_below="@id/iv_item_view"
                 android:layout_marginLeft="10sp"
                 android:textColor="@color/black"
-                android:layout_marginRight="3sp"
                 android:maxLines="2"
                 android:layout_marginTop="5sp"
                 android:textStyle="bold"
@@ -56,8 +55,7 @@
                 android:layout_below="@id/tv_item_title"
                 android:paddingLeft="3sp"
                 android:paddingRight="3sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginBottom="5sp"
+                android:layout_marginTop="8sp"
                 android:textColor="@color/colorAccent"
                 android:layout_marginLeft="10sp"/>
 
@@ -66,29 +64,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="price"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/tv_regular_price"
                 android:paddingLeft="3sp"
                 android:paddingRight="3sp"
-                android:layout_marginBottom="5sp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10sp"/>
 
 
-            <TextView
-                android:id="@+id/tv_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ADD"
-                android:textStyle="bold"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="5sp"
-                android:paddingLeft="3sp"
-                android:paddingRight="3sp"
-                android:layout_marginBottom="10sp"
-                android:textColor="@color/colorAccent"
-                android:layout_marginLeft="10sp"/>
+            <!--<TextView-->
+                <!--android:id="@+id/tv_add"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ADD"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="5sp"-->
+                <!--android:paddingLeft="3sp"-->
+                <!--android:paddingRight="3sp"-->
+                <!--android:layout_marginBottom="10sp"-->
+                <!--android:textColor="@color/colorAccent"-->
+                <!--android:layout_marginLeft="10sp"/>-->
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

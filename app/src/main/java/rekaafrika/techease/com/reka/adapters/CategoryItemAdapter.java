@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import rekaafrika.techease.com.reka.R;
@@ -64,6 +66,13 @@ public class CategoryItemAdapter   extends BaseAdapter {
         viewHolder.layout_product = convertView.findViewById(R.id.category_layout);
 
         viewHolder.tvTitle.setText(model.getName());
+
+        if(model.getImage().equals("") || model.getImage()==null){
+            viewHolder.ivItem.setImageDrawable(context.getResources().getDrawable(R.drawable.shop));
+        }
+        else {
+            Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
+        }
 
         viewHolder.layout_product.setOnClickListener(new View.OnClickListener() {
             @Override

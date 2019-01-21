@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,20 +43,30 @@ import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 
 public class ProductDetailsFragment extends Fragment {
     android.support.v7.app.AlertDialog alertDialog;
+    @BindView(R.id.tv_quantity)
+    TextView tvQuantity;
     @BindView(R.id.product_image)
     ImageView ivProduct;
     @BindView(R.id.product_name)
     TextView tvProductName;
-    @BindView(R.id.product_price)
+    @BindView(R.id.tv_product_price)
     TextView tvProductPrice;
+    @BindView(R.id.tv_total_price)
+    TextView tvTotalPrice;
     @BindView(R.id.product_descp)
     TextView tvProductDescp;
     @BindView(R.id.btnAddCart)
     Button btnAddCart;
+    @BindView(R.id.iv_add_quantity)
+    ImageView ivAddQuantity;
+    @BindView(R.id.iv_remove_quantity)
+    ImageView ivRemoveQuantity;
     View view;
 
     ShopCrud shopCrud;
-    String strProductID,strProductName,strProductImage,strProductPrice;
+    String strProductID, strProductName, strProductImage, strProductPrice;
+    int singleQuantity;
+    float  productPrice, totalPrice = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,8 +88,46 @@ public class ProductDetailsFragment extends Fragment {
         btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shopCrud.insertSingleProduct(strProductID,strProductName,strProductImage,strProductPrice);
-                GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new AddCartFragment());
+
+                shopCrud.insertSingleProduct(strProductID, strProductName, strProductImage, String.valueOf(totalPrice));
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new AddCartFragment());
+            }
+        });
+
+        singleQuantity = Integer.parseInt(tvQuantity.getText().toString());
+        ivAddQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(singleQuantity>=0){
+                    singleQuantity++;
+                    tvQuantity.setText(String.valueOf(singleQuantity));
+                    totalPrice = productPrice * singleQuantity;
+                    tvTotalPrice.setText(String.valueOf(totalPrice));
+                }
+                else if(singleQuantity<0){
+                    singleQuantity=0;
+                    singleQuantity++;
+                    tvQuantity.setText(String.valueOf(singleQuantity));
+                    totalPrice = productPrice * singleQuantity;
+                    tvTotalPrice.setText(String.valueOf(totalPrice));
+                }
+            }
+        });
+
+        ivRemoveQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                singleQuantity--;
+                if(singleQuantity==1){
+                    tvQuantity.setText("1");
+                    tvTotalPrice.setText(String.valueOf(productPrice));
+                }
+                else if(singleQuantity>=1) {
+                    tvQuantity.setText(String.valueOf(singleQuantity));
+                    totalPrice = productPrice * singleQuantity;
+                    tvTotalPrice.setText(String.valueOf(totalPrice));
+                }
+
             }
         });
 
@@ -94,26 +143,26 @@ public class ProductDetailsFragment extends Fragment {
                     alertDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
-                        JSONObject itemObject = jsonArray.getJSONObject(0);
+                    JSONObject itemObject = jsonArray.getJSONObject(0);
 
-                        strProductID = itemObject.getString("product_id");
-                        strProductImage = itemObject.getString("image");
-                        strProductName = itemObject.getString("title");
-                        strProductPrice = itemObject.getString("price");
+                    strProductID = itemObject.getString("product_id");
+                    strProductImage = itemObject.getString("image");
+                    strProductName = itemObject.getString("title");
+                    strProductPrice = itemObject.getString("price");
 
-                        Picasso.get().load(strProductImage).into(ivProduct);
-                        tvProductName.setText(strProductName);
-                        tvProductPrice.setText("PRICE "+strProductPrice);
-                        tvProductDescp.setText(itemObject.getString("description"));
+                    Picasso.get().load(strProductImage).into(ivProduct);
+                    tvProductName.setText(strProductName);
+                    tvProductPrice.setText(strProductPrice);
+                    tvTotalPrice.setText(strProductPrice);
+                    tvProductDescp.setText(itemObject.getString("description"));
+
+                    productPrice = Float.parseFloat(strProductPrice);
 
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
 
-                } catch (JSONException e)
-
-            {
-                e.printStackTrace();
-
-            }
+                }
             }
 
         }, new com.android.volley.Response.ErrorListener() {

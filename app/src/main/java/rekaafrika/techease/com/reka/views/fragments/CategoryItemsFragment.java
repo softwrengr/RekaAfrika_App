@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,8 +58,9 @@ public class CategoryItemsFragment extends Fragment {
     private void initUI() {
 
         Bundle bundle = this.getArguments();
-        categoryPosition = bundle.getInt("no");
-
+        if(bundle!=null){
+            categoryPosition = bundle.getInt("no");
+        }
 
         categoryItemModelArrayList = new ArrayList<>();
         alertDialog = AlertUtils.createProgressDialog(getActivity());
@@ -78,17 +80,19 @@ public class CategoryItemsFragment extends Fragment {
                     JSONObject object = jsonArray.getJSONObject(categoryPosition);
                     JSONArray array = object.getJSONArray("sub_categories");
                     for (int i = 0; i < array.length(); i++) {
-                        JSONObject itemObject = jsonArray.getJSONObject(i);
+                        JSONObject itemObject = array.getJSONObject(i);
 
                         String strProductID = itemObject.getString("id");
                         String strTitle = itemObject.getString("name");
                         String strSlug = itemObject.getString("slug");
+                        String strImage = itemObject.getString("image");
 
 
                         CategoryItemModel model = new CategoryItemModel();
                         model.setProduct_id(strProductID);
                         model.setName(strTitle);
                         model.setSlug(strSlug);
+                        model.setImage(strImage);
 
                         categoryItemModelArrayList.add(model);
                         categoryItemAdapter = new CategoryItemAdapter(getActivity(), categoryItemModelArrayList);
