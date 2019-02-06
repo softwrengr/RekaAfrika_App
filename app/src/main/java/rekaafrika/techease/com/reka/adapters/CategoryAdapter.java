@@ -72,7 +72,7 @@ public class CategoryAdapter  extends BaseAdapter {
 
 
         if(model.getImage().equals("") || model.getImage()==null){
-            viewHolder.ivCategory.setImageDrawable(context.getResources().getDrawable(R.drawable.shop));
+            viewHolder.ivCategory.setImageDrawable(context.getResources().getDrawable(R.drawable.placeholder));
         }
         else {
             Picasso.get().load(model.getImage()).into(viewHolder.ivCategory);

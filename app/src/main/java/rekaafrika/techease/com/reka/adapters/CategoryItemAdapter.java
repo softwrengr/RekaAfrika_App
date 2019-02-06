@@ -68,7 +68,7 @@ public class CategoryItemAdapter   extends BaseAdapter {
         viewHolder.tvTitle.setText(model.getName());
 
         if(model.getImage().equals("") || model.getImage()==null){
-            viewHolder.ivItem.setImageDrawable(context.getResources().getDrawable(R.drawable.shop));
+            viewHolder.ivItem.setImageDrawable(context.getResources().getDrawable(R.drawable.placeholder));
         }
         else {
             Picasso.get().load(model.getImage()).into(viewHolder.ivItem);

@@ -15,6 +15,7 @@ import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 import rekaafrika.techease.com.reka.views.fragments.AddCartFragment;
 import rekaafrika.techease.com.reka.views.fragments.CategoriesFragment;
+import rekaafrika.techease.com.reka.views.fragments.LoginFragment;
 
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -84,7 +85,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
          startActivity(new Intent(this,NavigationDrawerActivity.class));
         }
         else if(id == R.id.nav_wishlist){
-            GeneralUtils.connectDrawerFragmentWithBack(this,new AddCartFragment());
+            GeneralUtils.connectDrawerFragmentWithBack(this,new LoginFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
