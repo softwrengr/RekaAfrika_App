@@ -53,4 +53,8 @@ public class GeneralUtils {
     public static String getSlug(Context context) {
         return getSharedPreferences(context).getString("slug", "");
     }
+
+    public static String getValue(Context context) {
+        return getSharedPreferences(context).getString("value", "");
+    }
 }

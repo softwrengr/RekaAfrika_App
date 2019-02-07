@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -44,42 +45,61 @@ public class LoginFragment extends Fragment {
     Button btnLogin;
     @BindView(R.id.et_email)
     EditText etEmail;
+    @BindView(R.id.tv_sign_up)
+    TextView tvSignUp;
     View view;
     private boolean valid = false;
-    private String strEmail="Softwrengr@gmail.com";
+    private String strEmail;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_login, container, false);
+        getActivity().setTitle("Login");
         initUI();
         return view;
     }
 
-    private void initUI(){
-        ButterKnife.bind(this,view);
+    private void initUI() {
+        ButterKnife.bind(this, view);
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              if(validate()){
-                  alertDialog = AlertUtils.createProgressDialog(getActivity());
-                  alertDialog.show();
-                  apiCallLogin();
-              }
+                if (validate()) {
+                    alertDialog = AlertUtils.createProgressDialog(getActivity());
+                    alertDialog.show();
+                    apiCallLogin();
+                }
+            }
+        });
+
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new CreateCustomerFragment());
             }
         });
     }
 
-    private void apiCallLogin(){
+    private void apiCallLogin() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.GET_CUSTOMER_BY_EMAIL
                 , new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 alertDialog.dismiss();
-                Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
-              //  GeneralUtils.connectDrawerFragment(getActivity(),new CreateCustomerFragment());
+                if(response==null){
+                    Toast.makeText(getActivity(), "you got some error please try again later", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.contains("200")){
+                    Toast.makeText(getActivity(), "Successfull Login", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getActivity(), "incorrect email", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
         }, new com.android.volley.Response.ErrorListener() {
@@ -89,8 +109,7 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
-        })
-        {
+        }) {
             @Override
             public String getBodyContentType() {
                 return "application/x-www-form-urlencoded;charset=UTF-8";
@@ -99,7 +118,7 @@ public class LoginFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("email",strEmail);
+                params.put("email", strEmail);
                 return params;
             }
 
@@ -111,15 +130,14 @@ public class LoginFragment extends Fragment {
         mRequestQueue.add(stringRequest);
     }
 
-    private boolean validate(){
+    private boolean validate() {
         valid = true;
-        strEmail = etEmail.getText().toString();
+        strEmail = etEmail.getText().toString().trim();
 
-        if(strEmail.isEmpty()){
+        if (strEmail.isEmpty()) {
             etEmail.setError("please enter your email");
             valid = false;
-        }
-        else {
+        } else {
             etEmail.setError(null);
         }
         return valid;

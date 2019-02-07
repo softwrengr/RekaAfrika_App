@@ -1,16 +1,29 @@
 package rekaafrika.techease.com.reka.views.fragments;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,21 +37,30 @@ import rekaafrika.techease.com.reka.adapters.CartAdapter;
 import rekaafrika.techease.com.reka.dateModels.AllProductsModel;
 import rekaafrika.techease.com.reka.dateModels.CartModel;
 import rekaafrika.techease.com.reka.helpers.ShopCrud;
+import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 
 
 public class AddCartFragment extends Fragment {
-    @BindView(R.id.gv_cart)
-    GridView gvCart;
+    @BindView(R.id.rv_cart)
+    RecyclerView rvCart;
+    // @BindView(R.id.sub_total_price)
+    public static TextView tvSubTotalPrice;
+    // @BindView(R.id.sub_total_items_count)
+    public static TextView tvSubTotalItemsCount;
     ArrayList<CartModel> productsModelArrayList;
     ShopCrud shopCrud;
     View view;
+    @BindView(R.id.checkout)
+    TextView tvCheckOut;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_add_cart, container, false);
-        getActivity().setTitle("Cart");
+        tvSubTotalPrice = view.findViewById(R.id.sub_total_price);
+        tvSubTotalItemsCount = view.findViewById(R.id.sub_total_items_count);
+        getActivity().setTitle("My Bag");
         shopCrud = new ShopCrud(getActivity());
         initUI();
         return view;
@@ -46,8 +68,18 @@ public class AddCartFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this, view);
+        RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
+        rvCart.setLayoutManager(mLayoutManagerReviews);
         productsModelArrayList = new ArrayList<>();
         showProducts();
+
+        tvCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
+
     }
 
 
@@ -78,10 +110,19 @@ public class AddCartFragment extends Fragment {
         productsModelArrayList.clear();
         productsModelArrayList.addAll(set);
 
-
         CartAdapter adapter = new CartAdapter(getActivity(), productsModelArrayList);
-        gvCart.setAdapter(adapter);
+        rvCart.setAdapter(adapter);
     }
 
-
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Confirm Login").setMessage("you must be logged in first to continue.");
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new LoginFragment());
+            }
+        });
+        builder.show();
+    }
 }

@@ -66,7 +66,7 @@ public class ProductDetailsFragment extends Fragment {
     ShopCrud shopCrud;
     String strProductID, strProductName, strProductImage, strProductPrice;
     int singleQuantity;
-    float  productPrice, totalPrice = 0;
+    float  productPrice, totalPrice;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,6 +88,10 @@ public class ProductDetailsFragment extends Fragment {
         btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(totalPrice==0){
+                   totalPrice = productPrice;
+                }
 
                 shopCrud.insertSingleProduct(strProductID, strProductName, strProductImage, String.valueOf(totalPrice));
                 GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new AddCartFragment());
@@ -111,6 +115,7 @@ public class ProductDetailsFragment extends Fragment {
                     totalPrice = productPrice * singleQuantity;
                     tvTotalPrice.setText(String.valueOf(totalPrice));
                 }
+
             }
         });
 

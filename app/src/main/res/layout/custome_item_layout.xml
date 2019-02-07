@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -10,27 +10,25 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="230sp"
-        card_view:cardCornerRadius="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="140sp"
+        card_view:cardCornerRadius="5dp"
         card_view:cardPreventCornerOverlap="true"
         card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:id="@+id/item_layout"
-            android:layout_width="165sp"
-            android:layout_height="220sp"
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="140sp"
             android:background="#fff"
             android:padding="2sp"
             android:layout_marginTop="5sp">
             <ImageView
                 android:id="@+id/iv_item_view"
-                android:layout_width="match_parent"
-                android:layout_height="110sp"
-                android:layout_gravity="center"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
                 android:scaleType="fitXY"
-                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5sp"
                 android:layout_marginTop="2sp"
                 android:src="@drawable/shoping"/>
 
@@ -38,9 +36,10 @@
                 android:id="@+id/tv_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/iv_item_view"
+                android:layout_toRightOf="@id/iv_item_view"
                 android:layout_marginLeft="10sp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/medium"
                 android:maxLines="2"
                 android:layout_marginTop="5sp"
                 android:textStyle="bold"
@@ -51,8 +50,10 @@
                 android:id="@+id/tv_regular_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="regular price"
+                android:text="Price"
+                android:layout_toRightOf="@id/iv_item_view"
                 android:layout_below="@id/tv_item_title"
+                android:fontFamily="@font/extralight"
                 android:paddingLeft="3sp"
                 android:paddingRight="3sp"
                 android:layout_marginTop="8sp"
@@ -64,28 +65,82 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="price"
-                android:layout_below="@id/tv_regular_price"
+                android:layout_below="@id/tv_item_title"
+                android:layout_toRightOf="@id/tv_regular_price"
+                android:fontFamily="@font/extralight"
+                android:layout_marginTop="8sp"
                 android:paddingLeft="3sp"
                 android:paddingRight="3sp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10sp"/>
 
+            <View
+                android:layout_below="@id/iv_item_view"
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_marginTop="2sp"
+                android:background="@color/colorGray"/>
 
-            <!--<TextView-->
-                <!--android:id="@+id/tv_add"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="ADD"-->
-                <!--android:textStyle="bold"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_marginRight="5sp"-->
-                <!--android:paddingLeft="3sp"-->
-                <!--android:paddingRight="3sp"-->
-                <!--android:layout_marginBottom="10sp"-->
-                <!--android:textColor="@color/colorAccent"-->
-                <!--android:layout_marginLeft="10sp"/>-->
+            <RelativeLayout
+                android:id="@+id/layout_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:layout_below="@id/iv_item_view"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="12sp"
+                    android:text="Remove"
+                    android:gravity="center"
+                    android:background="@drawable/border"
+                    android:fontFamily="@font/medium"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5sp"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="20sp"
+                    android:layout_marginTop="5sp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_remove_quantity"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:padding="3sp"
+                        android:src="@drawable/minus"/>
+                    <TextView
+                        android:id="@+id/tv_quantity"
+                        android:layout_width="40sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="5sp"
+                        android:text="1"
+                        android:fontFamily="@font/extralight"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:cursorVisible="false"
+                        android:paddingRight="10sp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/iv_add_quantity"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:padding="3sp"
+                        android:src="@drawable/add"/>
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

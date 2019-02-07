@@ -76,8 +76,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_men) {
-            // Handle the camera action
+        if (id == R.id.nav_checkout) {
+          GeneralUtils.connectDrawerFragmentWithBack(this,new AddCartFragment());
         } else if (id == R.id.nav_women) {
 
         }
@@ -85,7 +85,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
          startActivity(new Intent(this,NavigationDrawerActivity.class));
         }
         else if(id == R.id.nav_wishlist){
-            GeneralUtils.connectDrawerFragmentWithBack(this,new LoginFragment());
+            GeneralUtils.connectDrawerFragmentWithBack(this,new AddCartFragment());
+        }
+        else if(id ==R.id.nav_women){
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

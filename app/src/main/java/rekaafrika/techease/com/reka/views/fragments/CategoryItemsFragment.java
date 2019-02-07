@@ -1,6 +1,7 @@
 package rekaafrika.techease.com.reka.views.fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -43,6 +44,7 @@ public class CategoryItemsFragment extends Fragment {
     CategoryItemAdapter categoryItemAdapter;
     View view;
     int categoryPosition;
+    Typeface typeface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

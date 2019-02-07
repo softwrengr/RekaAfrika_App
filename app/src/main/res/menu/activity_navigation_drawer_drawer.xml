@@ -8,7 +8,7 @@
 
             <item
                 android:id="@+id/nav_home"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/home"
                 android:title="Home" />
 
             <item
@@ -21,15 +21,15 @@
                 android:title="Address" />
             <item
                 android:id="@+id/nav_back_packs"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/order"
                 android:title="Orders" />
             <item
                 android:id="@+id/nav_wishlist"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/cart"
                 android:title="Wishlist" />
 
             <item
-                android:id="@+id/nav_men"
+                android:id="@+id/nav_checkout"
                 android:icon="@drawable/ic_menu_camera"
                 android:title="Checkout" />
             <item

@@ -1,6 +1,7 @@
 package rekaafrika.techease.com.reka.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,9 +68,11 @@ public class CategoryAdapter  extends BaseAdapter {
         viewHolder.tvTitle = convertView.findViewById(R.id.tv_category_name);
         viewHolder.ivCategory = convertView.findViewById(R.id.iv_category_view);
         viewHolder.layout_category = convertView.findViewById(R.id.category_layout);
+        viewHolder.typeface = Typeface.createFromAsset(context.getAssets(),
+                "medium.otf");
 
         viewHolder.tvTitle.setText(model.getName());
-
+        viewHolder.tvTitle.setTypeface(viewHolder.typeface);
 
         if(model.getImage().equals("") || model.getImage()==null){
             viewHolder.ivCategory.setImageDrawable(context.getResources().getDrawable(R.drawable.placeholder));
@@ -95,6 +98,7 @@ public class CategoryAdapter  extends BaseAdapter {
 
 
     private class MyViewHolder {
+        Typeface typeface;
         ImageView ivCategory;
         TextView tvTitle;
         RelativeLayout layout_category;

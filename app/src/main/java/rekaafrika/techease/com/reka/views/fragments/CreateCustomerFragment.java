@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,6 +29,7 @@ import butterknife.ButterKnife;
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.utilities.AlertUtils;
 import rekaafrika.techease.com.reka.utilities.Config;
+import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 
 
 public class CreateCustomerFragment extends Fragment {
@@ -45,6 +47,8 @@ public class CreateCustomerFragment extends Fragment {
     EditText etPassword;
     @BindView(R.id.btn_create_user)
     Button btnCreateUser;
+    @BindView(R.id.tv_login)
+    TextView tvLogin;
     private String strFirstName,strLastName,strEmail,strUsername,strPassword;
     private boolean valid = false;
     @Override
@@ -52,6 +56,7 @@ public class CreateCustomerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_create_customer, container, false);
+        getActivity().setTitle("Create Customer");
         initUI();
         return view;
     }
@@ -68,6 +73,13 @@ public class CreateCustomerFragment extends Fragment {
                 }
             }
         });
+
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new LoginFragment());
+            }
+        });
     }
     private void apiCallSignup(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.CREATE_CUSTOMER
@@ -75,7 +87,12 @@ public class CreateCustomerFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 alertDialog.dismiss();
-                Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+                if(response.contains("Customer Created")){
+                    Toast.makeText(getActivity(), "Successfully Customer Created", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getActivity(), "you got some error please try again", Toast.LENGTH_SHORT).show();
+                }
             }
 
         }, new com.android.volley.Response.ErrorListener() {
@@ -108,11 +125,11 @@ public class CreateCustomerFragment extends Fragment {
 
     private boolean validate(){
         valid = true;
-        strFirstName = etFirstName.getText().toString();
-        strLastName = etLastName.getText().toString();
-        strUsername = etUsername.getText().toString();
-        strEmail = etEmail.getText().toString();
-        strPassword = etPassword.getText().toString();
+        strFirstName = etFirstName.getText().toString().trim();
+        strLastName = etLastName.getText().toString().trim();
+        strUsername = etUsername.getText().toString().trim();
+        strEmail = etEmail.getText().toString().trim();
+        strPassword = etPassword.getText().toString().trim();
 
         if(strFirstName.isEmpty()){
             etFirstName.setError("please enter your first name");

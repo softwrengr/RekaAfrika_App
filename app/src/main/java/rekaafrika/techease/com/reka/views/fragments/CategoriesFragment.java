@@ -1,6 +1,7 @@
 package rekaafrika.techease.com.reka.views.fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -52,6 +53,7 @@ public class CategoriesFragment extends Fragment {
     CategoryAdapter categoryAdapter;
     @BindView(R.id.gv_categories)
     GridView gvCategories;
+    Typeface typeface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +61,8 @@ public class CategoriesFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_categories, container, false);
         getActivity().setTitle("Categories");
+        typeface = Typeface.createFromAsset(getActivity().getAssets(),
+                "bold.otf");
         initUI();
         return view;
     }

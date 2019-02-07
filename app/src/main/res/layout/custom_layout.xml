@@ -43,6 +43,7 @@
                 android:textColor="@color/black"
                 android:layout_marginRight="3sp"
                 android:maxLines="2"
+                android:fontFamily="@font/medium"
                 android:layout_marginTop="5sp"
                 android:textStyle="bold"
                 android:text="Category Name"/>

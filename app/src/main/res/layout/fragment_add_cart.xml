@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".views.fragments.AddCartFragment">
 
-    <GridView
-        android:id="@+id/gv_cart"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_cart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_horizontal"
@@ -17,7 +17,57 @@
         android:numColumns="2"
         android:layout_marginTop="5sp"
         android:verticalSpacing="15dp"
+        android:layout_above="@id/sub"
         android:stretchMode="columnWidth"
         />
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/sub"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:background="@drawable/border"
+        android:layout_above="@id/checkout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:textSize="12sp"
+            android:fontFamily="@font/medium"
+            android:text="SUBTOTAL"/>
+
+        <TextView
+            android:id="@+id/sub_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:textSize="12sp"
+            android:fontFamily="@font/extralight"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5sp"
+            android:text="SUBTOTAL"/>
+        <TextView
+            android:id="@+id/sub_total_items_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:textSize="12sp"
+            android:fontFamily="@font/extralight"
+            android:layout_below="@id/sub_total_price"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5sp"
+            android:text="Products"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/checkout"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_alignParentBottom="true"
+        android:text="CHECKOUT"
+        android:fontFamily="@font/extralight"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark"></TextView>
+
+</RelativeLayout>
