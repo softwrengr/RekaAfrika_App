@@ -87,7 +87,7 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.tvItemAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shopCrud.insertSingleProduct(model.getProduct_id(), model.getTitle(), model.getImage(), model.getPrice());
+                shopCrud.insertSingleProduct(model.getProduct_id(), model.getTitle(), model.getImage(), model.getPrice(),"1");
             }
         });
 

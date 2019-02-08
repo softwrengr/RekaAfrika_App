@@ -93,7 +93,7 @@ public class ProductDetailsFragment extends Fragment {
                    totalPrice = productPrice;
                 }
 
-                shopCrud.insertSingleProduct(strProductID, strProductName, strProductImage, String.valueOf(totalPrice));
+                shopCrud.insertSingleProduct(strProductID, strProductName, strProductImage, String.valueOf(totalPrice),String.valueOf(singleQuantity));
                 GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new AddCartFragment());
             }
         });

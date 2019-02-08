@@ -40,7 +40,7 @@
                 android:layout_toRightOf="@id/iv_category_view"
                 android:maxLines="2"
                 android:text="Category Name"
-                android:fontFamily="@font/medium"
+                android:fontFamily="@font/regular"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 

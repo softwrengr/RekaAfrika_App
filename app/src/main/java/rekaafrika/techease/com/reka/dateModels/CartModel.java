@@ -6,6 +6,7 @@ public class CartModel {
     String item_image;
     String item_name;
     String item_price;
+    String item_quantity;
 
     public String getId() {
         return id;
@@ -40,4 +41,11 @@ public class CartModel {
         this.item_price = item_price;
     }
 
+    public String getItem_quantity() {
+        return item_quantity;
+    }
+
+    public void setItem_quantity(String item_quantity) {
+        this.item_quantity = item_quantity;
+    }
 }

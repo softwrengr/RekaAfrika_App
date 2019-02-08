@@ -17,7 +17,7 @@ public class ShopDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String query = "CREATE TABLE CART_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT,PRODUCT_ID,PRODUCT_NAME,PRODUCT_IMAGE,PRODUCT_PRICE)";
+        String query = "CREATE TABLE CART_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT,PRODUCT_ID,PRODUCT_NAME,PRODUCT_IMAGE,PRODUCT_PRICE,PRODUCT_QUANTITY)";
         sqLiteDatabase.execSQL(query);
 
 

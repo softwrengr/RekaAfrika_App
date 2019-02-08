@@ -18,7 +18,7 @@ public class ShopCrud {
     }
 
     //inserting single products to cart
-    public void insertSingleProduct(String product_id,String product_name,String product_image,String product_price) {
+    public void insertSingleProduct(String product_id,String product_name,String product_image,String product_price,String quantity) {
 
         if (!checkProduct(product_id)) {
             ContentValues values = new ContentValues();
@@ -26,6 +26,7 @@ public class ShopCrud {
             values.put("PRODUCT_NAME",product_name);
             values.put("PRODUCT_IMAGE", product_image);
             values.put("PRODUCT_PRICE", product_price);
+            values.put("PRODUCT_QUANTITY",quantity);
             sqLiteDatabase.insert("CART_TABLE", null, values);
             Toast.makeText(context, "Successful added to cart", Toast.LENGTH_SHORT).show();
 
@@ -53,5 +54,20 @@ public class ShopCrud {
 
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         return cursor;
+    }
+
+    //deleting item from cart table
+    public void delete(String productID) {
+        this.sqLiteDatabase.delete("CART_TABLE", "PRODUCT_ID = '" + productID + "'", null);
+        Toast.makeText(context, "delete item successful", Toast.LENGTH_SHORT).show();
+    }
+
+    public void UpDateTable(String strSerialNumber, String strItemsPrice,String strQuantity) {
+        ContentValues cv = new ContentValues();
+        cv.put("PRODUCT_PRICE", strItemsPrice);
+        cv.put("PRODUCT_QUANTITY",strQuantity);
+        String whereClause = "PRODUCT_ID = '" + strSerialNumber + "'";
+        sqLiteDatabase.update("CART_TABLE", cv, whereClause, null);
+        Toast.makeText(context, "value updated", Toast.LENGTH_SHORT).show();
     }
 }

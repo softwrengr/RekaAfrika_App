@@ -41,6 +41,7 @@ public class GeneralUtils {
     }
 
 
+
     public static SharedPreferences getSharedPreferences(Context context) {
         return context.getSharedPreferences("afrika", 0);
     }
@@ -55,6 +56,10 @@ public class GeneralUtils {
     }
 
     public static String getValue(Context context) {
-        return getSharedPreferences(context).getString("value", "");
+        return getSharedPreferences(context).getString("value", "0");
+    }
+
+    public static String getListTotalValue(Context context) {
+        return getSharedPreferences(context).getString("list_total", "0");
     }
 }

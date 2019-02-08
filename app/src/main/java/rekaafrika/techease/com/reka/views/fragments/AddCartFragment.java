@@ -26,6 +26,8 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -83,7 +85,7 @@ public class AddCartFragment extends Fragment {
     }
 
 
-    private void showProducts() {
+    public void showProducts() {
 
         Cursor cursor = shopCrud.getProducts();
         while (cursor.moveToNext()) {
@@ -91,27 +93,37 @@ public class AddCartFragment extends Fragment {
             String strProductName = cursor.getString(2);
             String strProductImage = cursor.getString(3);
             String strProductPrice = cursor.getString(4);
+            String strProductQuantity = cursor.getString(5);
 
-            readAllProducts(strProductID, strProductName, strProductImage, strProductPrice);
+            readAllProducts(strProductID, strProductName, strProductImage, strProductPrice,strProductQuantity);
 
         }
     }
 
-    private void readAllProducts(String strProductID, String strProductName, String strProductImage, String strProductPrice) {
+    private void readAllProducts(String strProductID, String strProductName, String strProductImage, String strProductPrice,String strQuantity) {
 
         CartModel cartModel = new CartModel();
         cartModel.setId(strProductID);
         cartModel.setItem_name(strProductName);
         cartModel.setItem_image(strProductImage);
         cartModel.setItem_price(strProductPrice);
+        cartModel.setItem_quantity(strQuantity);
 
         productsModelArrayList.add(cartModel);
         Set<CartModel> set = new HashSet<>(productsModelArrayList);
         productsModelArrayList.clear();
         productsModelArrayList.addAll(set);
 
+//        Collections.sort(productsModelArrayList, new Comparator<CartModel>(){
+//            public int compare(CartModel obj1, CartModel obj2) {
+//                return obj1.getItem_name().compareToIgnoreCase(obj2.getItem_name());
+//            }
+//        });
+
         CartAdapter adapter = new CartAdapter(getActivity(), productsModelArrayList);
         rvCart.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
     }
 
     private void showDialog() {
@@ -124,5 +136,11 @@ public class AddCartFragment extends Fragment {
             }
         });
         builder.show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initUI();
     }
 }

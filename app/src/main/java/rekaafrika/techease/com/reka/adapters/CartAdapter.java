@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import java.util.List;
 
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.dateModels.AllProductsModel;
+import rekaafrika.techease.com.reka.dateModels.CalculationModel;
 import rekaafrika.techease.com.reka.dateModels.CartModel;
 import rekaafrika.techease.com.reka.helpers.ShopCrud;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
@@ -36,8 +38,7 @@ import rekaafrika.techease.com.reka.views.fragments.ProductDetailsFragment;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
     List<CartModel> allProductsModelArrayList;
     Context context;
-    int singleQuantity;
-    float  productPrice, totalPrice;
+    ShopCrud shopCrud;
 
     public CartAdapter(Activity context, List<CartModel> allProductsModelArrayList) {
         this.context = context;
@@ -64,60 +65,26 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     @SuppressLint("ResourceType")
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder viewHolder, final int position) {
         final CartModel model = allProductsModelArrayList.get(position);
+        shopCrud = new ShopCrud(context);
 
         viewHolder.tvTitle.setText(model.getItem_name());
-        viewHolder.tvPrice.setText("$"+model.getItem_price());
+        viewHolder.tvPrice.setText("$" + model.getItem_price());
+        viewHolder.tvQuantity.setText(model.getItem_quantity());
         Picasso.get().load(model.getItem_image()).into(viewHolder.ivItem);
-        AddCartFragment.tvSubTotalItemsCount.setText(String.valueOf(position+1)+" Products");
+        AddCartFragment.tvSubTotalItemsCount.setText(String.valueOf(position + 1) + " Products");
 
-        viewHolder.ivAddQuantity.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.tvDeleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                productPrice = Float.parseFloat(model.getItem_price());
-                singleQuantity = Integer.parseInt(viewHolder.tvQuantity.getText().toString());
-                if(singleQuantity>=0){
-                    singleQuantity++;
-                    viewHolder.tvQuantity.setText(String.valueOf(singleQuantity));
-                    totalPrice = productPrice * singleQuantity;
-                    viewHolder.tvPrice.setText(String.valueOf(totalPrice));
-                    Float inrementedValue = Float.parseFloat( viewHolder.tvPrice.getText().toString())-Float.parseFloat(model.getItem_price());
-                    GeneralUtils.putStringValueInEditor(context,"value",String.valueOf(inrementedValue));
-                    sumPrices(allProductsModelArrayList.size(),inrementedValue);
-                }
-                else if(singleQuantity<0){
-                    singleQuantity=0;
-                    singleQuantity++;
-                    viewHolder.tvQuantity.setText(String.valueOf(singleQuantity));
-                    totalPrice = productPrice * singleQuantity;
-                    viewHolder.tvPrice.setText(String.valueOf(totalPrice));
-                    Float decrementedValue = Float.parseFloat( viewHolder.tvPrice.getText().toString());
-                    Toast.makeText(context, String.valueOf(decrementedValue), Toast.LENGTH_SHORT).show();
-                    sumPrices(allProductsModelArrayList.size(),decrementedValue);
-                }
-
+                shopCrud.delete(model.getId());
+                GeneralUtils.connectDrawerFragmentWithBack(context, new AddCartFragment());
             }
         });
 
-        viewHolder.ivRemoveQuantity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                singleQuantity--;
-                if(singleQuantity==1){
-                    viewHolder.tvQuantity.setText("1");
-                    viewHolder.tvPrice.setText(String.valueOf(productPrice));
-                }
-                else if(singleQuantity>=1) {
-                    viewHolder.tvQuantity.setText(String.valueOf(singleQuantity));
-                    totalPrice = productPrice * singleQuantity;
-                    viewHolder.tvPrice.setText(String.valueOf(totalPrice));
-                }
-
-            }
-        });
-
-        sumPrices(allProductsModelArrayList.size(),totalPrice);
+        sumPrices();
 
     }
 
@@ -128,9 +95,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView ivItem;
-        TextView tvTitle, tvPrice,tvQuantity;
+        TextView tvTitle, tvPrice, tvQuantity, tvDeleteItem;
         RelativeLayout layout_product;
-        ImageView ivAddQuantity,ivRemoveQuantity;
+        ImageView ivAddQuantity, ivRemoveQuantity;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -140,23 +107,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             tvPrice = itemView.findViewById(R.id.tv_item_price);
             layout_product = itemView.findViewById(R.id.item_layout);
             tvQuantity = itemView.findViewById(R.id.tv_quantity);
-            ivAddQuantity = itemView.findViewById(R.id.iv_add_quantity);
-            ivRemoveQuantity = itemView.findViewById(R.id.iv_remove_quantity);
+            tvDeleteItem = itemView.findViewById(R.id.delete_item);
 
         }
     }
 
-    private void sumPrices(int size,float total){
-        float totalPrice=0;
-        try{
-            for (int i = 0; i<size; i++)
-            {
-                float subTotal =Float.parseFloat(allProductsModelArrayList.get(i).getItem_price());
+    private void sumPrices() {
+        float totalPrice = 0;
+        try {
+            for (int i = 0; i < allProductsModelArrayList.size(); i++) {
+                float subTotal = Float.parseFloat(allProductsModelArrayList.get(i).getItem_price());
                 totalPrice += subTotal;
             }
+            AddCartFragment.tvSubTotalPrice.setText(String.valueOf(totalPrice));
 
-            AddCartFragment.tvSubTotalPrice.setText(String.valueOf(totalPrice+Float.parseFloat(GeneralUtils.getValue(context))));
-        }catch(NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
