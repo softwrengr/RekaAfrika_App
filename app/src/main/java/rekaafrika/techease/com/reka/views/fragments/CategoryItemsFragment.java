@@ -60,7 +60,6 @@ public class CategoryItemsFragment extends Fragment {
     }
 
     private void initUI() {
-
         Bundle bundle = this.getArguments();
         if(bundle!=null){
             categoryPosition = bundle.getInt("no");

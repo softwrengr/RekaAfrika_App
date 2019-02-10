@@ -53,7 +53,7 @@ public class AddCartFragment extends Fragment {
     ShopCrud shopCrud;
     View view;
     @BindView(R.id.checkout)
-    TextView tvCheckOut;
+    TextView tvOrder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,7 +75,7 @@ public class AddCartFragment extends Fragment {
         productsModelArrayList = new ArrayList<>();
         showProducts();
 
-        tvCheckOut.setOnClickListener(new View.OnClickListener() {
+        tvOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog();
@@ -108,6 +108,8 @@ public class AddCartFragment extends Fragment {
         cartModel.setItem_image(strProductImage);
         cartModel.setItem_price(strProductPrice);
         cartModel.setItem_quantity(strQuantity);
+
+        Toast.makeText(getActivity(), strProductID, Toast.LENGTH_SHORT).show();
 
         productsModelArrayList.add(cartModel);
         Set<CartModel> set = new HashSet<>(productsModelArrayList);

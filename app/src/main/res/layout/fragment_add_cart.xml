@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="40sp"
         android:layout_alignParentBottom="true"
-        android:text="CHECKOUT"
+        android:text="PLACE ORDER"
         android:fontFamily="@font/extralight"
         android:textColor="@color/colorWhite"
         android:gravity="center"

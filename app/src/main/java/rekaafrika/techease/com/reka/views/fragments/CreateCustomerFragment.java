@@ -21,6 +21,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,8 +94,19 @@ public class CreateCustomerFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 alertDialog.dismiss();
-                if(response.contains("Customer Created")){
-                    Toast.makeText(getActivity(), "Successfully Customer Created", Toast.LENGTH_SHORT).show();
+                if(response.contains("true")){
+                    try {
+                        alertDialog.dismiss();
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONObject object = jsonObject.getJSONObject("data");
+                        String userID = object.getString("id");
+                        GeneralUtils.putStringValueInEditor(getActivity(),"userID",userID);
+                        GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new ShippingAddressFragment());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
                 }
                 else {
                     Toast.makeText(getActivity(), "you got some error please try again", Toast.LENGTH_SHORT).show();

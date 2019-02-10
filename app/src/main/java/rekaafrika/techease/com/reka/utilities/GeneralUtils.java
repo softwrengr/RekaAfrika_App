@@ -51,6 +51,10 @@ public class GeneralUtils {
         return getSharedPreferences(context).getString("product_id", "");
     }
 
+    public static String getUserID(Context context) {
+        return getSharedPreferences(context).getString("userID", "");
+    }
+
     public static String getSlug(Context context) {
         return getSharedPreferences(context).getString("slug", "");
     }

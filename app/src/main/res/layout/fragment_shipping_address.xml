@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.fragments.ShippingAddressFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15sp"
+                    android:src="@drawable/reka" />
+
+                <EditText
+                    android:id="@+id/et_shipping_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="First Name"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary"/>
+
+                <EditText
+                    android:id="@+id/et_shipping_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Last Name"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary"/>
+
+                <EditText
+                    android:id="@+id/et_shipping_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Company"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary"/>
+
+                <EditText
+                    android:id="@+id/et_shipping_address_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Address One"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary"/>
+
+                <EditText
+                    android:id="@+id/et_shipping_address_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Address Two"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary"/>
+
+                <EditText
+                    android:id="@+id/et_shipping_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="City"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/et_shipping_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="State"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/et_shipping_postcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Post Code"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary" />
+
+                <EditText
+                    android:id="@+id/et_shipping_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorGray"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Country"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorDarkGray"
+                    android:padding="10dp"
+                    android:textCursorDrawable="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/btn_shipping_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="45sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:text="SHIPPING ADDRESS"
+                    android:fontFamily="@font/extralight"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
