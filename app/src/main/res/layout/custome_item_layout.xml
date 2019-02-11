@@ -133,14 +133,6 @@
                         android:paddingRight="10sp"
                         />
 
-                    <!--<ImageView-->
-                        <!--android:id="@+id/iv_add_quantity"-->
-                        <!--android:layout_width="20sp"-->
-                        <!--android:layout_height="20sp"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:scaleType="fitXY"-->
-                        <!--android:padding="3sp"-->
-                        <!--android:src="@drawable/add"/>-->
                 </LinearLayout>
 
             </RelativeLayout>

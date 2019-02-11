@@ -9,7 +9,7 @@
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="230sp"
+        android:layout_height="240sp"
         card_view:cardCornerRadius="10dp"
         card_view:cardPreventCornerOverlap="true"
         card_view:cardUseCompatPadding="true">
@@ -17,7 +17,7 @@
         <RelativeLayout
             android:id="@+id/item_layout"
             android:layout_width="165sp"
-            android:layout_height="220sp"
+            android:layout_height="240sp"
             android:orientation="vertical"
             android:background="#fff"
             android:padding="2sp"
@@ -71,19 +71,17 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="10sp"/>
 
-            <TextView
-                android:id="@+id/tv_item_add"
+            <ImageView
+                android:id="@+id/iv_item_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ADD"
                 android:layout_below="@id/tv_regular_price"
-                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/tv_regular_price"
                 android:layout_marginRight="10sp"
-                android:fontFamily="@font/bold"
-                android:paddingLeft="3sp"
-                android:paddingRight="3sp"
-                android:layout_marginBottom="5sp"
-                android:textColor="@color/colorAccent"
+                android:paddingLeft="2sp"
+                android:paddingRight="2sp"
+                android:src="@drawable/cart"
+                android:layout_alignBaseline="@id/tv_regular_price"
                 android:layout_marginLeft="10sp"/>
 
 

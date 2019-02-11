@@ -40,6 +40,13 @@ public class GeneralUtils {
         return editor;
     }
 
+    public static SharedPreferences.Editor putBooleanValueInEditor(Context context, String key, boolean value) {
+        sharedPreferences = getSharedPreferences(context);
+        editor = sharedPreferences.edit();
+        editor.putBoolean(key, value).commit();
+        return editor;
+    }
+
 
 
     public static SharedPreferences getSharedPreferences(Context context) {
@@ -65,5 +72,9 @@ public class GeneralUtils {
 
     public static String getListTotalValue(Context context) {
         return getSharedPreferences(context).getString("list_total", "0");
+    }
+
+    public static boolean isLogin(Context context){
+        return getSharedPreferences(context).getBoolean("isLogin",false);
     }
 }

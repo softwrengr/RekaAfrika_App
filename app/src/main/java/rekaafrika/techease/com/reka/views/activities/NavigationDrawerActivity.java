@@ -15,6 +15,7 @@ import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 import rekaafrika.techease.com.reka.views.fragments.AddCartFragment;
 import rekaafrika.techease.com.reka.views.fragments.CategoriesFragment;
+import rekaafrika.techease.com.reka.views.fragments.CustomerOrderFragment;
 import rekaafrika.techease.com.reka.views.fragments.LoginFragment;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -87,7 +88,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
         else if(id == R.id.nav_wishlist){
             GeneralUtils.connectDrawerFragmentWithBack(this,new AddCartFragment());
         }
-        else if(id ==R.id.nav_women){
+        else if(id ==R.id.nav_order){
+            GeneralUtils.connectDrawerFragmentWithBack(this,new CustomerOrderFragment());
 
         }
 

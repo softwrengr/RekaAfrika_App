@@ -29,6 +29,7 @@
         android:layout_above="@id/checkout">
 
         <TextView
+            android:id="@+id/ids"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"

@@ -13,28 +13,28 @@
 
             <item
                 android:id="@+id/nav_duffer_bag"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/account"
                 android:title="Account" />
             <item
                 android:id="@+id/nav_shoulder_bags"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/adress"
                 android:title="Address" />
             <item
-                android:id="@+id/nav_back_packs"
-                android:icon="@drawable/order"
+                android:id="@+id/nav_order"
+                android:icon="@drawable/customer_order"
                 android:title="Orders" />
             <item
                 android:id="@+id/nav_wishlist"
                 android:icon="@drawable/cart"
-                android:title="Wishlist" />
+                android:title="CART" />
 
             <item
                 android:id="@+id/nav_checkout"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/order"
                 android:title="Checkout" />
             <item
                 android:id="@+id/nav_women"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/logout"
                 android:title="Logout" />
         </menu>
     </item>

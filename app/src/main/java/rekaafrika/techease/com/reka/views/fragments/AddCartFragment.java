@@ -1,14 +1,9 @@
 package rekaafrika.techease.com.reka.views.fragments;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,44 +11,51 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.adapters.CartAdapter;
-import rekaafrika.techease.com.reka.dateModels.AllProductsModel;
 import rekaafrika.techease.com.reka.dateModels.CartModel;
 import rekaafrika.techease.com.reka.helpers.ShopCrud;
+import rekaafrika.techease.com.reka.interfaces.LoginInterface;
+import rekaafrika.techease.com.reka.utilities.AlertUtils;
+import rekaafrika.techease.com.reka.utilities.Config;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 
 
-public class AddCartFragment extends Fragment {
+public class AddCartFragment extends Fragment implements LoginInterface {
+    android.support.v7.app.AlertDialog alertDialog;
+    View view;
     @BindView(R.id.rv_cart)
     RecyclerView rvCart;
-    // @BindView(R.id.sub_total_price)
+    @BindView(R.id.checkout)
+    TextView tvOrder;
+
     public static TextView tvSubTotalPrice;
-    // @BindView(R.id.sub_total_items_count)
     public static TextView tvSubTotalItemsCount;
     ArrayList<CartModel> productsModelArrayList;
     ShopCrud shopCrud;
-    View view;
-    @BindView(R.id.checkout)
-    TextView tvOrder;
+    HashMap<String, String> hmProductIDs, hmQuantities;
+
+    StringBuilder builderIDs, builderQuantities;
+    String strProductIDS, strProdutctQuantities;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +72,8 @@ public class AddCartFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this, view);
+        hmProductIDs = new HashMap<>();
+        hmQuantities = new HashMap<>();
         RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
         rvCart.setLayoutManager(mLayoutManagerReviews);
         productsModelArrayList = new ArrayList<>();
@@ -78,7 +82,13 @@ public class AddCartFragment extends Fragment {
         tvOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                if (GeneralUtils.isLogin(getActivity())) {
+                    showPopUp();
+                } else {
+                    showDialog();
+                }
+
+
             }
         });
 
@@ -95,12 +105,24 @@ public class AddCartFragment extends Fragment {
             String strProductPrice = cursor.getString(4);
             String strProductQuantity = cursor.getString(5);
 
-            readAllProducts(strProductID, strProductName, strProductImage, strProductPrice,strProductQuantity);
+            readAllProducts(strProductID, strProductName, strProductImage, strProductPrice, strProductQuantity);
+
+            hmProductIDs.put(strProductID, strProductID);
+            hmQuantities.put(strProductID, strProductQuantity);
+
+            builderIDs = new StringBuilder();
+            for (String name : hmProductIDs.values()) {
+                builderIDs.append(name + ",");
+            }
+            builderQuantities = new StringBuilder();
+            for (String name : hmProductIDs.values()) {
+                builderQuantities.append(name + ",");
+            }
 
         }
     }
 
-    private void readAllProducts(String strProductID, String strProductName, String strProductImage, String strProductPrice,String strQuantity) {
+    private void readAllProducts(String strProductID, String strProductName, String strProductImage, String strProductPrice, String strQuantity) {
 
         CartModel cartModel = new CartModel();
         cartModel.setId(strProductID);
@@ -108,8 +130,6 @@ public class AddCartFragment extends Fragment {
         cartModel.setItem_image(strProductImage);
         cartModel.setItem_price(strProductPrice);
         cartModel.setItem_quantity(strQuantity);
-
-        Toast.makeText(getActivity(), strProductID, Toast.LENGTH_SHORT).show();
 
         productsModelArrayList.add(cartModel);
         Set<CartModel> set = new HashSet<>(productsModelArrayList);
@@ -144,5 +164,74 @@ public class AddCartFragment extends Fragment {
     public void onResume() {
         super.onResume();
         initUI();
+    }
+
+    private void apiCallOrder() {
+        strProductIDS = builderIDs.toString().trim();
+        strProdutctQuantities = builderQuantities.toString().trim();
+        final String replaceIDs = strProductIDS.substring(0, strProductIDS.length() - 1) + "";
+        final String replaceQuantities = strProdutctQuantities.substring(0, strProdutctQuantities.length() - 1) + "";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.CREATE_ORDER
+                , new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                alertDialog.dismiss();
+               if(response.contains("true")){
+                   Toast.makeText(getActivity(), "Order Created", Toast.LENGTH_SHORT).show();
+                   shopCrud.clearData();
+                   GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new CustomerOrderFragment());
+               }
+            }
+
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //alertDialog.dismiss();
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put("note", "this is an example");
+                params.put("userid", GeneralUtils.getUserID(getActivity()));
+                params.put("product_ids", replaceIDs);
+                params.put("quantity", replaceQuantities);
+                return params;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+
+    }
+
+    @Override
+    public void onLoginClicked(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        switch (message) {
+            case "":
+                break;
+        }
+    }
+
+    private void showPopUp() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Confirm Order").setMessage("Are you sure to place order ?");
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alertDialog = AlertUtils.createProgressDialog(getActivity());
+                alertDialog.show();
+                apiCallOrder();
+            }
+        });
+        builder.show();
     }
 }

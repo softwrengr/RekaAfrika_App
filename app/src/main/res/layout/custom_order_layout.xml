@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="140sp"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:id="@+id/order_layout"
+            android:layout_width="match_parent"
+            android:layout_height="140sp"
+            android:background="#fff"
+            android:padding="2sp"
+            android:layout_marginTop="5sp">
+
+            <TextView
+                android:id="@+id/tv_order_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_item_view"
+                android:layout_marginLeft="10sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/regular"
+                android:maxLines="2"
+                android:layout_marginTop="5sp"
+                android:textStyle="bold"
+                android:text="Order ID"/>
+
+
+            <TextView
+                android:id="@+id/tv_order_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Number"
+                android:layout_below="@id/tv_order_id"
+                android:fontFamily="@font/extralight"
+                android:paddingLeft="3sp"
+                android:paddingRight="3sp"
+                android:layout_marginTop="8sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginLeft="10sp"/>
+
+            <TextView
+                android:id="@+id/tv_order_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:layout_below="@id/tv_order_no"
+                android:fontFamily="@font/extralight"
+                android:layout_marginTop="8sp"
+                android:paddingLeft="3sp"
+                android:paddingRight="3sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10sp"/>
+
+            <TextView
+                android:id="@+id/tv_order_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:layout_below="@id/tv_order_status"
+                android:fontFamily="@font/extralight"
+                android:layout_marginTop="8sp"
+                android:paddingLeft="3sp"
+                android:paddingRight="3sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10sp"/>
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

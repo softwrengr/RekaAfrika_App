@@ -8,5 +8,7 @@ public class Config {
     public static String CATEGORIES = "http://divergense.com/woocommerce/api/get_product_categories";
     public static String CATEGORY_PRODUCT = "http://divergense.com/woocommerce/api/get_category_products";
     public static String SHIPPING_ADDRESS = "http://divergense.com/woocommerce/api/updateShippingAddress";
+    public static String CREATE_ORDER = "http://divergense.com/woocommerce/api/createOrders";
+    public static String GET_ORDERS = "http://divergense.com/woocommerce/api/getOrders";
 
 }

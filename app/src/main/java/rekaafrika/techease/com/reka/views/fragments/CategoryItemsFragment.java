@@ -120,13 +120,6 @@ public class CategoryItemsFragment extends Fragment {
         }) {
 
 
-            //            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String,String> params = new HashMap<String, String>();
-//                params.put("category","Local Non-Fiction");
-//                return params;
-//            }
-
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();

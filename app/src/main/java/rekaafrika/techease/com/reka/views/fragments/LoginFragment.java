@@ -1,12 +1,10 @@
 package rekaafrika.techease.com.reka.views.fragments;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,8 +30,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rekaafrika.techease.com.reka.R;
-import rekaafrika.techease.com.reka.adapters.CategoryAdapter;
-import rekaafrika.techease.com.reka.dateModels.CategoryDataModel;
+import rekaafrika.techease.com.reka.interfaces.LoginInterface;
 import rekaafrika.techease.com.reka.utilities.AlertUtils;
 import rekaafrika.techease.com.reka.utilities.Config;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
@@ -51,6 +47,7 @@ public class LoginFragment extends Fragment {
     View view;
     private boolean valid = false;
     private String strEmail;
+    public static onOrderInterface mListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +57,7 @@ public class LoginFragment extends Fragment {
         customActionBar();
         initUI();
         return view;
+
     }
 
     private void initUI() {
@@ -80,7 +78,7 @@ public class LoginFragment extends Fragment {
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectDrawerFragmentWithBack(getActivity(),new CreateCustomerFragment());
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new CreateCustomerFragment());
             }
         });
     }
@@ -91,13 +89,28 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 alertDialog.dismiss();
-                if(response==null){
+                if (response == null) {
+
                     Toast.makeText(getActivity(), "you got some error please try again later", Toast.LENGTH_SHORT).show();
-                }
-                else if(response.contains("200")){
-                    Toast.makeText(getActivity(), "Successfull Login", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else if (response.contains("true")) {
+
+                    try {
+                        alertDialog.dismiss();
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONObject object = jsonObject.getJSONObject("data");
+                        String userID = object.getString("id");
+                        Toast.makeText(getActivity(), userID, Toast.LENGTH_SHORT).show();
+//                        mListener.orderPlaceInterface();
+                        GeneralUtils.putBooleanValueInEditor(getActivity(), "isLogin", true);
+                        GeneralUtils.putStringValueInEditor(getActivity(), "userID", userID);
+                        GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new AddCartFragment());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
+
+                } else {
                     Toast.makeText(getActivity(), "incorrect email", Toast.LENGTH_SHORT).show();
                 }
 
@@ -159,4 +172,11 @@ public class LoginFragment extends Fragment {
         mActionBar.show();
 
     }
+
+    // on OrderClick Interface
+    public interface onOrderInterface {
+        void orderPlaceInterface();
+    }
+
+
 }

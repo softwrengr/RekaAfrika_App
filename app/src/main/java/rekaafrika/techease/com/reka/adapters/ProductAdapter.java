@@ -69,7 +69,7 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.ivItem = convertView.findViewById(R.id.iv_item_view);
         viewHolder.tvPrice = convertView.findViewById(R.id.tv_item_price);
         viewHolder.layout_product = convertView.findViewById(R.id.item_layout);
-        viewHolder.tvItemAdd = convertView.findViewById(R.id.tv_item_add);
+        viewHolder.ivAddCart = convertView.findViewById(R.id.iv_item_add);
 
         viewHolder.tvTitle.setText(model.getTitle());
         viewHolder.tvPrice.setText(model.getPrice());
@@ -84,7 +84,7 @@ public class ProductAdapter  extends BaseAdapter {
             }
         });
 
-        viewHolder.tvItemAdd.setOnClickListener(new View.OnClickListener() {
+        viewHolder.ivAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shopCrud.insertSingleProduct(model.getProduct_id(), model.getTitle(), model.getImage(), model.getPrice(),"1");
@@ -98,7 +98,7 @@ public class ProductAdapter  extends BaseAdapter {
 
 
     private class MyViewHolder {
-        ImageView ivItem;
+        ImageView ivItem,ivAddCart;
         TextView tvTitle,tvPrice,tvItemAdd;
         RelativeLayout layout_product;
     }

@@ -70,4 +70,9 @@ public class ShopCrud {
         sqLiteDatabase.update("CART_TABLE", cv, whereClause, null);
         Toast.makeText(context, "value updated", Toast.LENGTH_SHORT).show();
     }
+
+    public void clearData(){
+        String clearData = "DELETE  FROM CART_TABLE";
+        sqLiteDatabase.execSQL(clearData);
+    }
 }
