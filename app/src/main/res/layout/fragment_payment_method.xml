@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.fragments.PaymentMethodFragment">
+
+
+
+    <TextView
+        android:id="@+id/orders"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:text="Order"
+        android:gravity="center|left"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/medium"
+        android:background="@color/colorGray"
+        android:layout_marginLeft="10sp"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_order_items"
+        android:layout_below="@id/orders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"/>
+
+    <LinearLayout
+        android:layout_below="@id/rv_order_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="10sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35sp"
+            android:text="Select Payment Method"
+            android:gravity="center|left"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/medium"
+            android:textStyle="bold"
+            android:background="@color/colorGray"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="Cash on Delivery"/>
+
+        <TextView
+            android:id="@+id/tv_paypal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/regular"
+            android:text="Paypal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="PayFast"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="Pay Later"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="SnapScan"/>
+    </LinearLayout>
+
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_above="@id/btn_order_checkout">
+
+        <TextView
+            android:id="@+id/sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="Sub Total"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_below="@id/sub"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="Totals"/>
+
+        <TextView
+            android:id="@+id/sub_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/regular"
+            android:text="Sub Total"/>
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/sub"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="Totals"/>
+
+    </RelativeLayout>
+    
+    <Button
+        android:id="@+id/btn_order_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:text="Check Out"
+        android:textColor="@color/colorWhite"
+        android:fontFamily="@font/extralight"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"/>
+
+
+</RelativeLayout>

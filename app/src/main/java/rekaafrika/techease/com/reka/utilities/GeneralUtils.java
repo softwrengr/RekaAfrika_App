@@ -66,12 +66,12 @@ public class GeneralUtils {
         return getSharedPreferences(context).getString("slug", "");
     }
 
-    public static String getValue(Context context) {
-        return getSharedPreferences(context).getString("value", "0");
+    public static String getPosition(Context context) {
+        return getSharedPreferences(context).getString("position", "0");
     }
 
-    public static String getListTotalValue(Context context) {
-        return getSharedPreferences(context).getString("list_total", "0");
+    public static String getTotalPrice(Context context) {
+        return getSharedPreferences(context).getString("sub_total", "0");
     }
 
     public static boolean isLogin(Context context){
