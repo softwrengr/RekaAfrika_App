@@ -50,12 +50,12 @@ public class HomeFragment extends Fragment {
         productsModelArrayList = new ArrayList<>();
         alertDialog = com.techease.rekaafrika.utilities.AlertUtils.createProgressDialog(getActivity());
         alertDialog.show();
-        getLiveRates();
+        getCategories();
 
     }
 
 
-    private void getLiveRates() {
+    private void getCategories() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, com.techease.rekaafrika.utilities.Config.ALL_PRODUCTS
                 , new com.android.volley.Response.Listener<String>() {
             @Override

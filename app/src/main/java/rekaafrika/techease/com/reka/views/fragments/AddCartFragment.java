@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,10 @@ public class AddCartFragment extends Fragment implements LoginInterface {
     RecyclerView rvCart;
     @BindView(R.id.checkout)
     TextView tvOrder;
+    @BindView(R.id.recycler_layout)
+    RelativeLayout layoutRecycler;
+    @BindView(R.id.empty)
+    RelativeLayout layoutEmpty;
 
     public static TextView tvSubTotalPrice;
     public static TextView tvSubTotalItemsCount;
@@ -62,6 +67,7 @@ public class AddCartFragment extends Fragment implements LoginInterface {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_add_cart, container, false);
+
         tvSubTotalPrice = view.findViewById(R.id.sub_total_price);
         tvSubTotalItemsCount = view.findViewById(R.id.sub_total_items_count);
         getActivity().setTitle("My Bag");
@@ -78,6 +84,14 @@ public class AddCartFragment extends Fragment implements LoginInterface {
         rvCart.setLayoutManager(mLayoutManagerReviews);
         productsModelArrayList = new ArrayList<>();
         showProducts();
+
+        if(productsModelArrayList==null || productsModelArrayList.size()==0){
+            layoutRecycler.setVisibility(View.GONE);
+            layoutEmpty.setVisibility(View.VISIBLE);
+        }
+        else {
+        }
+
 
         tvOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,12 +149,6 @@ public class AddCartFragment extends Fragment implements LoginInterface {
         Set<CartModel> set = new HashSet<>(productsModelArrayList);
         productsModelArrayList.clear();
         productsModelArrayList.addAll(set);
-
-//        Collections.sort(productsModelArrayList, new Comparator<CartModel>(){
-//            public int compare(CartModel obj1, CartModel obj2) {
-//                return obj1.getItem_name().compareToIgnoreCase(obj2.getItem_name());
-//            }
-//        });
 
         CartAdapter adapter = new CartAdapter(getActivity(), productsModelArrayList);
         rvCart.setAdapter(adapter);
