@@ -61,7 +61,7 @@ public class PaypalPaymentActivity extends AppCompatActivity {
         start.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         startService(start);
 
-        paymentAmount = GeneralUtils.getTotalPrice(this);
+        paymentAmount = GeneralUtils.getSubTotalPrice(this);
         PayPalPayment payment = new PayPalPayment(new BigDecimal(paymentAmount), "USD", "Rekaafrika",
                 PayPalPayment.PAYMENT_INTENT_SALE);
 

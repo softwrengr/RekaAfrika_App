@@ -65,9 +65,9 @@ public class ProductDetailsFragment extends Fragment {
     View view;
 
     ShopCrud shopCrud;
-    String strProductID, strProductName, strProductImage, strProductPrice;
+    String strProductID, strProductName, strProductImage, strProductPrice, strDescription;
     int singleQuantity;
-    float  productPrice, totalPrice;
+    float productPrice, totalPrice;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,11 +90,11 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(totalPrice==0){
-                   totalPrice = productPrice;
+                if (totalPrice == 0) {
+                    totalPrice = productPrice;
                 }
 
-                shopCrud.insertSingleProduct(strProductID, strProductName, strProductImage, String.valueOf(totalPrice),String.valueOf(singleQuantity));
+                shopCrud.insertSingleProduct(strProductID, strProductName, strProductImage, String.valueOf(totalPrice), String.valueOf(singleQuantity));
                 GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new AddCartFragment());
             }
         });
@@ -103,14 +103,13 @@ public class ProductDetailsFragment extends Fragment {
         ivAddQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(singleQuantity>=0){
+                if (singleQuantity >= 0) {
                     singleQuantity++;
                     tvQuantity.setText(String.valueOf(singleQuantity));
                     totalPrice = productPrice * singleQuantity;
                     tvTotalPrice.setText(String.valueOf(totalPrice));
-                }
-                else if(singleQuantity<0){
-                    singleQuantity=0;
+                } else if (singleQuantity < 0) {
+                    singleQuantity = 0;
                     singleQuantity++;
                     tvQuantity.setText(String.valueOf(singleQuantity));
                     totalPrice = productPrice * singleQuantity;
@@ -124,11 +123,10 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 singleQuantity--;
-                if(singleQuantity==1){
+                if (singleQuantity == 1) {
                     tvQuantity.setText("1");
                     tvTotalPrice.setText(String.valueOf(productPrice));
-                }
-                else if(singleQuantity>=1) {
+                } else if (singleQuantity >= 1) {
                     tvQuantity.setText(String.valueOf(singleQuantity));
                     totalPrice = productPrice * singleQuantity;
                     tvTotalPrice.setText(String.valueOf(totalPrice));
@@ -145,22 +143,26 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 try {
-
                     alertDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                     JSONObject itemObject = jsonArray.getJSONObject(0);
 
                     strProductID = itemObject.getString("product_id");
-                    strProductImage = itemObject.getString("image");
                     strProductName = itemObject.getString("title");
                     strProductPrice = itemObject.getString("price");
+                    strDescription = itemObject.getString("description");
+
+                    JSONArray imageArray = itemObject.getJSONArray("images");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        strProductImage = imageArray.getString(0);
+                    }
 
                     Picasso.get().load(strProductImage).into(ivProduct);
                     tvProductName.setText(strProductName);
                     tvProductPrice.setText(strProductPrice);
                     tvTotalPrice.setText(strProductPrice);
-                    tvProductDescp.setText(itemObject.getString("description"));
+                    tvProductDescp.setText(strDescription);
 
                     productPrice = Float.parseFloat(strProductPrice);
 

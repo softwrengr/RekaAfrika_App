@@ -1,7 +1,7 @@
 package rekaafrika.techease.com.reka.dateModels;
 
 public class CustomerOrderModel {
-    String orderID,orderNumber,orderStatus,orderTotal;
+    String orderID,orderNumber,orderStatus,orderTotal,orderQuantity;
 
     public String getOrderID() {
         return orderID;
@@ -33,5 +33,13 @@ public class CustomerOrderModel {
 
     public void setOrderTotal(String orderTotal) {
         this.orderTotal = orderTotal;
+    }
+
+    public String getOrderQuantity() {
+        return orderQuantity;
+    }
+
+    public void setOrderQuantity(String orderQuantity) {
+        this.orderQuantity = orderQuantity;
     }
 }

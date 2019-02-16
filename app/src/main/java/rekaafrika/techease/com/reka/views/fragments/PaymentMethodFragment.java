@@ -1,6 +1,7 @@
 package rekaafrika.techease.com.reka.views.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,10 +53,18 @@ public class PaymentMethodFragment extends Fragment {
     RecyclerView rvItems;
     @BindView(R.id.tv_paypal)
     TextView tvPaypal;
+    @BindView(R.id.tv_stripe)
+    TextView tvStripe;
     @BindView(R.id.sub_total)
     TextView tvSubTotal;
     @BindView(R.id.total)
     TextView tvTotal;
+    @BindView(R.id.btn_order_checkout)
+    Button btnOrderCheckout;
+    @BindView(R.id.paypal_checked)
+    ImageView ivPaypalCheck;
+    @BindView(R.id.stripe_checked)
+    ImageView ivStripeCheck;
     ArrayList<OrderItemModel> orderItemModelArrayList;
     PlaceOrderAdapter placeOrderAdapter;
     float totalPrice = 0;
@@ -79,33 +90,57 @@ public class PaymentMethodFragment extends Fragment {
         tvPaypal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), PaypalPaymentActivity.class));
+                GeneralUtils.putStringValueInEditor(getActivity(), "payment_type", "paypal");
+                ivPaypalCheck.setVisibility(View.VISIBLE);
+            }
+        });
+
+        tvStripe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.putStringValueInEditor(getActivity(), "payment_type", "stripe");
+                ivStripeCheck.setVisibility(View.VISIBLE);
+                ivPaypalCheck.setVisibility(View.GONE);
+            }
+        });
+
+        btnOrderCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCheckOutPopUp();
             }
         });
     }
 
     private void apiCallOrders() {
-        final int positon = Integer.parseInt(GeneralUtils.getPosition(getActivity()));
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.GET_ORDERS
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.SPECIFIC_ORDER
                 , new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 if (response.contains("true")) {
                     try {
                         alertDialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response);
-                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-                        JSONObject object = jsonArray.getJSONObject(positon);
-                        JSONArray array = object.getJSONArray("line_items");
+                        JSONObject object = jsonObject.getJSONObject("data");
 
+                        String totalAmount = object.getString("total");
+                        String totalQuantity = object.getString("total_line_items_quantity");
+
+                        GeneralUtils.putStringValueInEditor(getActivity(), "subtotal", totalAmount);
+                        GeneralUtils.putStringValueInEditor(getActivity(), "quantity", totalQuantity);
+
+                        JSONArray array = object.getJSONArray("line_items");
                         for (int i = 0; i <= array.length(); i++) {
                             JSONObject itemObject = array.getJSONObject(i);
                             String strName = itemObject.getString("name");
                             String strPrice = itemObject.getString("price");
+                            String strQuantity = itemObject.getString("quantity");
 
                             OrderItemModel model = new OrderItemModel();
                             model.setItemName(strName);
                             model.setItemPrice(strPrice);
+                            model.setItemQuantity(strQuantity);
 
                             orderItemModelArrayList.add(model);
                             placeOrderAdapter = new PlaceOrderAdapter(getActivity(), orderItemModelArrayList);
@@ -135,7 +170,7 @@ public class PaymentMethodFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("userid", GeneralUtils.getUserID(getActivity()));
+                params.put("orderid", GeneralUtils.getOrderID(getActivity()));
                 return params;
             }
 
@@ -147,12 +182,24 @@ public class PaymentMethodFragment extends Fragment {
         mRequestQueue.add(stringRequest);
     }
 
-    private void sumPrices(String prices){
+    private void sumPrices(String prices) {
         float subTotal = Float.parseFloat(prices);
         totalPrice += subTotal;
         tvSubTotal.setText(String.valueOf(totalPrice));
         tvTotal.setText(String.valueOf(totalPrice));
-        GeneralUtils.putStringValueInEditor(getActivity(),"sub_total",String.valueOf(totalPrice));
+        GeneralUtils.putStringValueInEditor(getActivity(), "sub_total", String.valueOf(totalPrice));
+    }
+
+    private void showCheckOutPopUp() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
+        builder.setTitle("Rekaafrika").setMessage("Are you sure to confirm your order ?");
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new OrderCompletionFragment());
+            }
+        });
+        builder.show();
     }
 
 }

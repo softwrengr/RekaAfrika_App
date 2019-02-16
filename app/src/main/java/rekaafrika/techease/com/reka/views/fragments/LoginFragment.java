@@ -99,8 +99,7 @@ public class LoginFragment extends Fragment {
                         JSONObject jsonObject = new JSONObject(response);
                         JSONObject object = jsonObject.getJSONObject("data");
                         String userID = object.getString("id");
-                        Toast.makeText(getActivity(), userID, Toast.LENGTH_SHORT).show();
-//                        mListener.orderPlaceInterface();
+//
                         GeneralUtils.putBooleanValueInEditor(getActivity(), "isLogin", true);
                         GeneralUtils.putStringValueInEditor(getActivity(), "userID", userID);
                         GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new AddCartFragment());

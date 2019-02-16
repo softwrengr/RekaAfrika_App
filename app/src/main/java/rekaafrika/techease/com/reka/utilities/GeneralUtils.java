@@ -70,8 +70,20 @@ public class GeneralUtils {
         return getSharedPreferences(context).getString("position", "0");
     }
 
-    public static String getTotalPrice(Context context) {
-        return getSharedPreferences(context).getString("sub_total", "0");
+    public static String getSubTotalPrice(Context context) {
+        return getSharedPreferences(context).getString("subtotal", "0");
+    }
+
+    public static String getOrderID(Context context) {
+        return getSharedPreferences(context).getString("order_id", "0");
+    }
+
+    public static String getQuantity(Context context) {
+        return getSharedPreferences(context).getString("quantity", "0");
+    }
+
+    public static String getPaymentType(Context context) {
+        return getSharedPreferences(context).getString("payment_type", "0");
     }
 
     public static boolean isLogin(Context context){

@@ -1,7 +1,7 @@
 package rekaafrika.techease.com.reka.dateModels;
 
 public class OrderItemModel {
-    String itemSku,itemID,itemName,itemPrice;
+    String itemSku,itemID,itemName,itemPrice,itemQuantity;
 
     public String getItemSku() {
         return itemSku;
@@ -33,5 +33,13 @@ public class OrderItemModel {
 
     public void setItemPrice(String itemPrice) {
         this.itemPrice = itemPrice;
+    }
+
+    public String getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemQuantity(String itemQuantity) {
+        this.itemQuantity = itemQuantity;
     }
 }

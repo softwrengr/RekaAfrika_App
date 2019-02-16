@@ -68,6 +68,7 @@ public class CustomerOrderAdapter extends RecyclerView.Adapter<CustomerOrderAdap
         viewHolder.layout_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GeneralUtils.putStringValueInEditor(context,"order_id",model.getOrderID());
                 GeneralUtils.putStringValueInEditor(context,"position",String.valueOf(position));
                 GeneralUtils.connectDrawerFragmentWithBack(context,new PaymentMethodFragment());
             }
