@@ -15,5 +15,6 @@ public class Config {
     public static String GET_ORDERS = "http://divergense.com/woo/api/getOrders";
     public static String SPECIFIC_ORDER = "http://divergense.com/woo/api/getSpecificOrder";
     public static String PAYMENT = "http://divergense.com/woo/api/payment";
+    public static String SLIDER_IMAGES = "http://divergense.com/woo/home/sliderImages";
 
 }

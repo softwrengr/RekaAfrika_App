@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -73,7 +74,8 @@ public class ProductAdapter  extends BaseAdapter {
 
         viewHolder.tvTitle.setText(model.getTitle());
         viewHolder.tvPrice.setText(model.getPrice());
-        Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
+      //  Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
+        Glide.with(context).load(model.getImage()).into(viewHolder.ivItem);
 
         viewHolder.layout_product.setOnClickListener(new View.OnClickListener() {
             @Override

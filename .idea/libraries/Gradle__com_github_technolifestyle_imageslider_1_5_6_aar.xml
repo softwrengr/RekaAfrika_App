@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.technolifestyle:imageslider:1.5.6@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/imageslider-1.5.6.aar/6dc90ed907f15bac3894d980233dbccc/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/imageslider-1.5.6.aar/6dc90ed907f15bac3894d980233dbccc/jars/libs/picasso-2.5.2.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/imageslider-1.5.6.aar/6dc90ed907f15bac3894d980233dbccc/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.technolifestyle/imageslider/1.5.6/a5e8d0b72054f88b1a54e2f2580075fb13ca823c/imageslider-1.5.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

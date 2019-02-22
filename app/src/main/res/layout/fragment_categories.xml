@@ -6,19 +6,24 @@
     android:orientation="vertical"
     tools:context=".views.fragments.CategoriesFragment">
 
-    <ImageView
-        android:id="@+id/upper_layout"
+    <RelativeLayout
+        android:id="@+id/slider_layout"
         android:layout_width="match_parent"
-        android:layout_height="270sp"
-        android:scaleType="fitXY"
-        android:background="@drawable/shop">
+        android:layout_height="250sp">
 
-    </ImageView>
+        <com.smarteist.autoimageslider.SliderLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/imageSlider"/>
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/upper_layout"
+        android:layout_below="@id/slider_layout"
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"
         android:background="@drawable/back_shape"

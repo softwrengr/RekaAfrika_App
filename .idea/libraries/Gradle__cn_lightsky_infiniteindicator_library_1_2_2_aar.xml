@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.lightsky.infiniteindicator:library:1.2.2@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.2.aar/e769159ac655003639662eeb3d771a70/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.2.aar/e769159ac655003639662eeb3d771a70/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.lightsky.infiniteindicator/library/1.2.2/c231c44433bc3a81fe9a7cf3b42e731634c63c43/library-1.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -22,6 +22,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -158,7 +159,8 @@ public class ProductDetailsFragment extends Fragment {
                         strProductImage = imageArray.getString(0);
                     }
 
-                    Picasso.get().load(strProductImage).into(ivProduct);
+                 //   Picasso.get().load(strProductImage).into(ivProduct);
+                    Glide.with(getActivity()).load(strProductImage).into(ivProduct);
                     tvProductName.setText(strProductName);
                     tvProductPrice.setText(strProductPrice);
                     tvTotalPrice.setText(strProductPrice);

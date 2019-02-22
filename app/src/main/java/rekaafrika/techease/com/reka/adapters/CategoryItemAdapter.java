@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -71,7 +72,8 @@ public class CategoryItemAdapter   extends BaseAdapter {
             viewHolder.ivItem.setImageDrawable(context.getResources().getDrawable(R.drawable.placeholder));
         }
         else {
-            Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
+         //   Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
+            Glide.with(context).load(model.getImage()).into(viewHolder.ivItem);
         }
 
         viewHolder.layout_product.setOnClickListener(new View.OnClickListener() {

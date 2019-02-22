@@ -11,14 +11,14 @@
                 android:icon="@drawable/home"
                 android:title="Home" />
 
-            <item
-                android:id="@+id/nav_duffer_bag"
-                android:icon="@drawable/account"
-                android:title="Account" />
-            <item
-                android:id="@+id/nav_shoulder_bags"
-                android:icon="@drawable/adress"
-                android:title="Address" />
+            <!--<item-->
+                <!--android:id="@+id/nav_duffer_bag"-->
+                <!--android:icon="@drawable/account"-->
+                <!--android:title="Account" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_shoulder_bags"-->
+                <!--android:icon="@drawable/adress"-->
+                <!--android:title="Address" />-->
             <item
                 android:id="@+id/nav_order"
                 android:icon="@drawable/customer_order"

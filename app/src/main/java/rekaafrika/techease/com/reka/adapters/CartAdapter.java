@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -72,7 +73,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         viewHolder.tvTitle.setText(model.getItem_name());
         viewHolder.tvPrice.setText("$" + model.getItem_price());
         viewHolder.tvQuantity.setText(model.getItem_quantity());
-        Picasso.get().load(model.getItem_image()).into(viewHolder.ivItem);
+      //  Picasso.get().load(model.getItem_image()).into(viewHolder.ivItem);
+        Glide.with(context).load(model.getItem_image()).into(viewHolder.ivItem);
         AddCartFragment.tvSubTotalItemsCount.setText(String.valueOf(position + 1) + " Products");
 
 

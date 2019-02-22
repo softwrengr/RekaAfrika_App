@@ -1,6 +1,7 @@
 package rekaafrika.techease.com.reka.views.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,6 +51,7 @@ public class CustomerOrderFragment extends Fragment {
     RecyclerView rvOrder;
     ArrayList<CustomerOrderModel> orderModelArrayList;
     CustomerOrderAdapter customerOrderAdapter;
+    String strUserID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,12 +65,18 @@ public class CustomerOrderFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this, view);
-        RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
-        rvOrder.setLayoutManager(mLayoutManagerReviews);
-        orderModelArrayList = new ArrayList<>();
-        alertDialog = AlertUtils.createProgressDialog(getActivity());
-        alertDialog.show();
-        showCustomerOrder();
+        strUserID = GeneralUtils.getUserID(getActivity());
+        if (strUserID.equals("") || strUserID == null) {
+            showPopUp();
+        } else {
+            RecyclerView.LayoutManager mLayoutManagerReviews = new LinearLayoutManager(getActivity());
+            rvOrder.setLayoutManager(mLayoutManagerReviews);
+            orderModelArrayList = new ArrayList<>();
+            alertDialog = AlertUtils.createProgressDialog(getActivity());
+            alertDialog.show();
+            showCustomerOrder();
+        }
+
     }
 
     private void showCustomerOrder() {
@@ -119,7 +127,7 @@ public class CustomerOrderFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("userid", GeneralUtils.getUserID(getActivity()));
+                params.put("userid", strUserID);
                 return params;
             }
 
@@ -145,6 +153,18 @@ public class CustomerOrderFragment extends Fragment {
         mActionBar.setDisplayShowCustomEnabled(true);
         mActionBar.show();
 
+    }
+
+    private void showPopUp() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
+        builder.setTitle("Orders").setMessage("you must login first?");
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GeneralUtils.connectDrawerFragmentWithBack(getActivity(), new LoginFragment());
+            }
+        });
+        builder.show();
     }
 
 }
