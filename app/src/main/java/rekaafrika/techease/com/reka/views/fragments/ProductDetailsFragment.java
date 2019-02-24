@@ -63,6 +63,10 @@ public class ProductDetailsFragment extends Fragment {
     ImageView ivAddQuantity;
     @BindView(R.id.iv_remove_quantity)
     ImageView ivRemoveQuantity;
+    @BindView(R.id.iv_currency_icon)
+    ImageView ivCurrency;
+    @BindView(R.id.iv_total_currency_icon)
+    ImageView ivCurrencyIcon;
     View view;
 
     ShopCrud shopCrud;
@@ -151,22 +155,44 @@ public class ProductDetailsFragment extends Fragment {
 
                     strProductID = itemObject.getString("product_id");
                     strProductName = itemObject.getString("title");
-                    strProductPrice = itemObject.getString("price");
+                    // strProductPrice = itemObject.getString("price");
                     strDescription = itemObject.getString("description");
+                    strProductPrice = GeneralUtils.getItemPrice(getActivity());
 
                     JSONArray imageArray = itemObject.getJSONArray("images");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         strProductImage = imageArray.getString(0);
                     }
 
-                 //   Picasso.get().load(strProductImage).into(ivProduct);
                     Glide.with(getActivity()).load(strProductImage).into(ivProduct);
                     tvProductName.setText(strProductName);
                     tvProductPrice.setText(strProductPrice);
                     tvTotalPrice.setText(strProductPrice);
                     tvProductDescp.setText(strDescription);
-
                     productPrice = Float.parseFloat(strProductPrice);
+
+                    switch (GeneralUtils.getCurrency(getActivity())) {
+                        case "usd":
+                            ivCurrency.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.dollar));
+                            ivCurrencyIcon.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.dollar));
+                            break;
+                        case "rand":
+                            ivCurrency.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.rand));
+                            ivCurrencyIcon.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.rand));
+                            break;
+                        case "euro":
+                            ivCurrency.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.euro));
+                            ivCurrencyIcon.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.euro));
+                            break;
+                        case "pound":
+                            ivCurrency.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.pound));
+                            ivCurrencyIcon.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.pound));
+                            break;
+                        case "pula":
+                            ivCurrency.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.pula));
+                            ivCurrencyIcon.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.pula));
+                            break;
+                    }
 
 
                 } catch (JSONException e) {
@@ -197,7 +223,6 @@ public class ProductDetailsFragment extends Fragment {
         mRequestQueue.add(stringRequest);
     }
 
-    //cutomAction Bar
     public void customActionBar() {
         android.support.v7.app.ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);

@@ -17,4 +17,7 @@ public class Config {
     public static String PAYMENT = "http://divergense.com/woo/api/payment";
     public static String SLIDER_IMAGES = "http://divergense.com/woo/home/sliderImages";
 
+    public static String CurrencyToken = "76fd89c113a8122c23a6";
+    public static String CurrencyConverterUrl = "http://free.currencyconverterapi.com/api/v5/convert?q=";
+
 }

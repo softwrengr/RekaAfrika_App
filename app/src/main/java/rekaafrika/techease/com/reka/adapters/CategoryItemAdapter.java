@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import rekaafrika.techease.com.reka.R;
 import rekaafrika.techease.com.reka.dateModels.CategoryItemModel;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
+import rekaafrika.techease.com.reka.views.fragments.PriceFilterFragment;
 import rekaafrika.techease.com.reka.views.fragments.ProductsFragment;
 
 public class CategoryItemAdapter   extends BaseAdapter {
@@ -80,7 +81,7 @@ public class CategoryItemAdapter   extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 GeneralUtils.putStringValueInEditor(context,"slug",model.getSlug());
-                GeneralUtils.connectDrawerFragmentWithBack(context,new ProductsFragment());
+                GeneralUtils.connectDrawerFragmentWithBack(context,new PriceFilterFragment());
             }
         });
 

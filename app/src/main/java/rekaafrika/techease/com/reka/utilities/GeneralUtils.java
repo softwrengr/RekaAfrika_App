@@ -86,6 +86,14 @@ public class GeneralUtils {
         return getSharedPreferences(context).getString("payment_type", "0");
     }
 
+    public static String getCurrency(Context context) {
+        return getSharedPreferences(context).getString("currency", "zar");
+    }
+
+    public static String getItemPrice(Context context) {
+        return getSharedPreferences(context).getString("item_price", "zar");
+    }
+
     public static boolean isLogin(Context context){
         return getSharedPreferences(context).getBoolean("isLogin",false);
     }

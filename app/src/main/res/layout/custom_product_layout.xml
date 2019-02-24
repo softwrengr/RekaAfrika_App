@@ -59,17 +59,25 @@
                 android:textColor="@color/colorAccent"
                 android:layout_marginLeft="10sp"/>
 
+            <ImageView
+                android:id="@+id/iv_currency"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:layout_marginLeft="10sp"
+                android:padding="2sp"
+                android:src="@drawable/rand"
+                android:layout_below="@id/tv_regular_price"/>
+
             <TextView
                 android:id="@+id/tv_item_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="price"
                 android:layout_below="@id/tv_regular_price"
+                android:layout_toRightOf="@+id/iv_currency"
                 android:fontFamily="@font/extralight"
-                android:paddingLeft="3sp"
                 android:paddingRight="3sp"
-                android:textColor="@color/black"
-                android:layout_marginLeft="10sp"/>
+                android:textColor="@color/black"/>
 
             <ImageView
                 android:id="@+id/iv_item_add"

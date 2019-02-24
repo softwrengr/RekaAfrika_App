@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.fragments.PriceFilterFragment">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp">
+
+        <LinearLayout
+            android:id="@+id/layout_dollar"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/dollar"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/bold"
+                android:layout_marginLeft="10sp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Dollar"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp">
+
+        <LinearLayout
+            android:id="@+id/layout_rand"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/rand"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/bold"
+                android:layout_marginLeft="10sp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Rand ZAR"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp">
+
+        <LinearLayout
+            android:id="@+id/layout_pound"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/pound"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/bold"
+                android:layout_marginLeft="10sp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Pound"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp">
+
+        <LinearLayout
+            android:id="@+id/layout_euro"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/euro"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/bold"
+                android:layout_marginLeft="10sp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Pound"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp">
+
+        <LinearLayout
+            android:id="@+id/layout_pula"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:gravity="center|left"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/pula"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/bold"
+                android:layout_marginLeft="10sp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Pula"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

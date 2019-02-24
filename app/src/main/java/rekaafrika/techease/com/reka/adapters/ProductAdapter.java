@@ -71,16 +71,35 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.tvPrice = convertView.findViewById(R.id.tv_item_price);
         viewHolder.layout_product = convertView.findViewById(R.id.item_layout);
         viewHolder.ivAddCart = convertView.findViewById(R.id.iv_item_add);
+        viewHolder.ivCurrency = convertView.findViewById(R.id.iv_currency);
+
+        switch (GeneralUtils.getCurrency(context)){
+            case "usd":
+                viewHolder.ivCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.dollar));
+                break;
+            case "rand":
+                viewHolder.ivCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.rand));
+                break;
+            case "euro":
+                viewHolder.ivCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.euro));
+                break;
+            case "pound":
+                viewHolder.ivCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.pound));
+                break;
+            case "pula":
+                viewHolder.ivCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.pula));
+                break;
+        }
 
         viewHolder.tvTitle.setText(model.getTitle());
         viewHolder.tvPrice.setText(model.getPrice());
-      //  Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
         Glide.with(context).load(model.getImage()).into(viewHolder.ivItem);
 
         viewHolder.layout_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GeneralUtils.putStringValueInEditor(context,"product_id",model.getProduct_id());
+                GeneralUtils.putStringValueInEditor(context,"item_price",model.getPrice());
                 GeneralUtils.connectDrawerFragmentWithBack(context,new ProductDetailsFragment());
 
             }
@@ -100,7 +119,7 @@ public class ProductAdapter  extends BaseAdapter {
 
 
     private class MyViewHolder {
-        ImageView ivItem,ivAddCart;
+        ImageView ivItem,ivAddCart,ivCurrency;
         TextView tvTitle,tvPrice,tvItemAdd;
         RelativeLayout layout_product;
     }

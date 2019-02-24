@@ -83,10 +83,11 @@ public class ProductsFragment extends Fragment {
                         String strPrice = itemObject.getString("price");
                         String strImage = itemObject.getString("image");
 
+                        float currency = Float.parseFloat(strPrice)*Float.parseFloat(PriceFilterFragment.strCurrency);
 
                         model.setProduct_id(strProductID);
                         model.setTitle(strTitle);
-                        model.setPrice(strPrice);
+                        model.setPrice(String.valueOf(currency));
                         model.setImage(strImage);
 
 
