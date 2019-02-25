@@ -130,6 +130,7 @@ public class OrderCompletionFragment extends Fragment {
                 params.put("customer_id", strCustomerID);
                 params.put("card_type", "Visa");
                 params.put("order_id", strOrderID);
+                params.put("currency",GeneralUtils.getCurrency(getActivity()));
                 return params;
             }
 

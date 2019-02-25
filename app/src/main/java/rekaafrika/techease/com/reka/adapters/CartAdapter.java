@@ -71,11 +71,28 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         shopCrud = new ShopCrud(context);
 
         viewHolder.tvTitle.setText(model.getItem_name());
-        viewHolder.tvPrice.setText("$" + model.getItem_price());
+        viewHolder.tvPrice.setText(model.getItem_price());
         viewHolder.tvQuantity.setText(model.getItem_quantity());
-      //  Picasso.get().load(model.getItem_image()).into(viewHolder.ivItem);
         Glide.with(context).load(model.getItem_image()).into(viewHolder.ivItem);
         AddCartFragment.tvSubTotalItemsCount.setText(String.valueOf(position + 1) + " Products");
+
+        switch (GeneralUtils.getCurrency(context)) {
+            case "usd":
+                viewHolder.ivCartCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.dollar));
+                break;
+            case "rand":
+                viewHolder.ivCartCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.rand));
+                break;
+            case "euro":
+                viewHolder.ivCartCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.euro));
+                break;
+            case "pound":
+                viewHolder.ivCartCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.pound));
+                break;
+            case "pula":
+                viewHolder.ivCartCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.pula));
+                break;
+        }
 
 
         viewHolder.tvDeleteItem.setOnClickListener(new View.OnClickListener() {
@@ -96,10 +113,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivItem;
+        ImageView ivItem, ivCartCurrency;
         TextView tvTitle, tvPrice, tvQuantity, tvDeleteItem;
         RelativeLayout layout_product;
-        ImageView ivAddQuantity, ivRemoveQuantity;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -110,6 +126,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             layout_product = itemView.findViewById(R.id.item_layout);
             tvQuantity = itemView.findViewById(R.id.tv_quantity);
             tvDeleteItem = itemView.findViewById(R.id.delete_item);
+            ivCartCurrency = itemView.findViewById(R.id.iv_cart_currency);
 
         }
     }

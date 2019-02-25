@@ -173,6 +173,13 @@
             android:fontFamily="@font/regular"
             android:text="Totals"/>
 
+        <ImageView
+            android:id="@+id/iv_subtotal_symbol"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:src="@drawable/rand"
+            android:layout_toLeftOf="@id/sub_total"/>
+
         <TextView
             android:id="@+id/sub_total"
             android:layout_width="wrap_content"
@@ -183,6 +190,14 @@
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/regular"
             android:text="Sub Total"/>
+
+        <ImageView
+            android:id="@+id/iv_total_symbol"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:src="@drawable/rand"
+            android:layout_below="@id/sub"
+            android:layout_toLeftOf="@id/total"/>
 
         <TextView
             android:id="@+id/total"

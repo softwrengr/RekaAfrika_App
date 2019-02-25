@@ -46,7 +46,7 @@ public class ProductsFragment extends Fragment {
     ArrayList<AllProductsModel> productsModelArrayList;
     ProductAdapter productAdapter;
     public static ArrayList<String> arrayList = new ArrayList<>();
-    String strCurrency="1";
+    String strCurrency;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +61,7 @@ public class ProductsFragment extends Fragment {
 
     private void initUI() {
         ButterKnife.bind(this, view);
+        // GeneralUtils.putStringValueInEditor(getActivity(), "currency", "rand");
         productsModelArrayList = new ArrayList<>();
         alertDialog = AlertUtils.createProgressDialog(getActivity());
         alertDialog.show();
@@ -87,15 +88,12 @@ public class ProductsFragment extends Fragment {
                         String strPrice = itemObject.getString("price");
                         String strImage = itemObject.getString("image");
 
-                        float currency = Float.parseFloat(strPrice)*Float.parseFloat(strCurrency);
-
                         model.setProduct_id(strProductID);
                         model.setTitle(strTitle);
-                        model.setPrice(String.valueOf(currency));
+                        model.setPrice(strPrice);
                         model.setImage(strImage);
 
                         productsModelArrayList.add(model);
-                        ProductAdapter productAdapter;
                         productAdapter = new ProductAdapter(getActivity(), productsModelArrayList);
                         gvProducts.setAdapter(productAdapter);
                         productAdapter.notifyDataSetChanged();
@@ -108,7 +106,7 @@ public class ProductsFragment extends Fragment {
                 }
             }
 
-        },  new com.android.volley.Response.ErrorListener() {
+        }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 alertDialog.dismiss();
@@ -145,7 +143,7 @@ public class ProductsFragment extends Fragment {
         ivFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             showDropDownMenu(ivFilter);
+                showDropDownMenu(ivFilter);
             }
         });
         tvTitle.setText("Products");
@@ -164,34 +162,19 @@ public class ProductsFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.dollar:
-                        alertDialog = AlertUtils.createProgressDialog(getActivity());
-                        alertDialog.show();
-                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","usd");
-                        apiCallCurrency("ZAR_USD");
+                        convertCurrency("ZAR_USD", "usd");
                         break;
                     case R.id.rand:
-                        alertDialog = AlertUtils.createProgressDialog(getActivity());
-                        alertDialog.show();
-                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","rand");
-                        apiCallCurrency("ZAR_ZAR");
+                        convertCurrency("ZAR_ZAR", "zar");
                         break;
                     case R.id.pound:
-                        alertDialog = AlertUtils.createProgressDialog(getActivity());
-                        alertDialog.show();
-                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","pound");
-                        apiCallCurrency("ZAR_GBP");
+                        convertCurrency("ZAR_GBP", "pound");
                         break;
                     case R.id.euro:
-                        alertDialog = AlertUtils.createProgressDialog(getActivity());
-                        alertDialog.show();
-                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","euro");
-                        apiCallCurrency("ZAR_EUR");
+                        convertCurrency("ZAR_EUR", "euro");
                         break;
                     case R.id.pula:
-                        alertDialog = AlertUtils.createProgressDialog(getActivity());
-                        alertDialog.show();
-                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","pula");
-                        apiCallCurrency("ZAR_BWP");
+                        convertCurrency("ZAR_BWP", "pula");
                         break;
                 }
                 return true;
@@ -199,6 +182,13 @@ public class ProductsFragment extends Fragment {
         });
 
         popup.show();
+    }
+
+    private void convertCurrency(String currency, String name) {
+        alertDialog = AlertUtils.createProgressDialog(getActivity());
+        alertDialog.show();
+        GeneralUtils.putStringValueInEditor(getActivity(), "currency", name);
+        apiCallCurrency(currency);
     }
 
     private void apiCallCurrency(final String currency) {
@@ -211,7 +201,8 @@ public class ProductsFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject object = jsonObject.getJSONObject(currency);
                     strCurrency = object.getString("val");
-                    initUI();
+                    GeneralUtils.putStringValueInEditor(getActivity(), "converted_currency", strCurrency);
+                    productAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

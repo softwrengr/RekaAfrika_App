@@ -21,8 +21,11 @@ import rekaafrika.techease.com.reka.helpers.ShopCrud;
 import rekaafrika.techease.com.reka.utilities.GeneralUtils;
 import rekaafrika.techease.com.reka.views.fragments.CategoriesFragment;
 import rekaafrika.techease.com.reka.views.fragments.ProductDetailsFragment;
+import rekaafrika.techease.com.reka.views.fragments.ProductsFragment;
 
-public class ProductAdapter  extends BaseAdapter {
+import static rekaafrika.techease.com.reka.views.fragments.PriceFilterFragment.strCurrency;
+
+public class ProductAdapter extends BaseAdapter {
     ArrayList<AllProductsModel> allProductsModelArrayList;
     Context context;
     private LayoutInflater layoutInflater;
@@ -73,11 +76,11 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.ivAddCart = convertView.findViewById(R.id.iv_item_add);
         viewHolder.ivCurrency = convertView.findViewById(R.id.iv_currency);
 
-        switch (GeneralUtils.getCurrency(context)){
+        switch (GeneralUtils.getCurrency(context)) {
             case "usd":
                 viewHolder.ivCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.dollar));
                 break;
-            case "rand":
+            case "zar":
                 viewHolder.ivCurrency.setImageDrawable(context.getResources().getDrawable(R.drawable.rand));
                 break;
             case "euro":
@@ -91,16 +94,18 @@ public class ProductAdapter  extends BaseAdapter {
                 break;
         }
 
+        final float currency = Float.parseFloat(model.getPrice()) * Float.parseFloat(GeneralUtils.getConvertedCurrency(context));
+
         viewHolder.tvTitle.setText(model.getTitle());
-        viewHolder.tvPrice.setText(model.getPrice());
+        viewHolder.tvPrice.setText(String.valueOf(currency));
         Glide.with(context).load(model.getImage()).into(viewHolder.ivItem);
 
         viewHolder.layout_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.putStringValueInEditor(context,"product_id",model.getProduct_id());
-                GeneralUtils.putStringValueInEditor(context,"item_price",model.getPrice());
-                GeneralUtils.connectDrawerFragmentWithBack(context,new ProductDetailsFragment());
+                GeneralUtils.putStringValueInEditor(context, "product_id", model.getProduct_id());
+                GeneralUtils.putStringValueInEditor(context, "item_price", String.valueOf(currency));
+                GeneralUtils.connectDrawerFragmentWithBack(context, new ProductDetailsFragment());
 
             }
         });
@@ -108,7 +113,7 @@ public class ProductAdapter  extends BaseAdapter {
         viewHolder.ivAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shopCrud.insertSingleProduct(model.getProduct_id(), model.getTitle(), model.getImage(), model.getPrice(),"1");
+                shopCrud.insertSingleProduct(model.getProduct_id(), model.getTitle(), model.getImage(), model.getPrice(), "1");
             }
         });
 
@@ -119,8 +124,8 @@ public class ProductAdapter  extends BaseAdapter {
 
 
     private class MyViewHolder {
-        ImageView ivItem,ivAddCart,ivCurrency;
-        TextView tvTitle,tvPrice,tvItemAdd;
+        ImageView ivItem, ivAddCart, ivCurrency;
+        TextView tvTitle, tvPrice;
         RelativeLayout layout_product;
     }
 }

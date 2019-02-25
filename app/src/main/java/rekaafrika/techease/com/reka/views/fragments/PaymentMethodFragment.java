@@ -7,13 +7,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,10 +59,7 @@ public class PaymentMethodFragment extends Fragment {
     TextView tvPaypal;
     @BindView(R.id.tv_stripe)
     TextView tvStripe;
-    @BindView(R.id.sub_total)
-    TextView tvSubTotal;
-    @BindView(R.id.total)
-    TextView tvTotal;
+    public static TextView tvTotal,tvSubTotal;
     @BindView(R.id.btn_order_checkout)
     Button btnOrderCheckout;
     @BindView(R.id.paypal_checked)
@@ -67,13 +68,21 @@ public class PaymentMethodFragment extends Fragment {
     ImageView ivStripeCheck;
     ArrayList<OrderItemModel> orderItemModelArrayList;
     PlaceOrderAdapter placeOrderAdapter;
-    float totalPrice = 0;
+    public static float totalPrice = 0;
+    private String strCurrency;
+
+    public static ImageView ivTotalSymbol,ivSubTotalSymbol;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_payment_method, container, false);
+        customActionBar();
+        tvSubTotal = view.findViewById(R.id.sub_total);
+        tvTotal = view.findViewById(R.id.total);
+        ivSubTotalSymbol = view.findViewById(R.id.iv_subtotal_symbol);
+        ivTotalSymbol = view.findViewById(R.id.iv_total_symbol);
         initUI();
         return view;
     }
@@ -146,7 +155,7 @@ public class PaymentMethodFragment extends Fragment {
                             placeOrderAdapter = new PlaceOrderAdapter(getActivity(), orderItemModelArrayList);
                             rvItems.setAdapter(placeOrderAdapter);
 
-                            sumPrices(strPrice);
+                           // sumPrices(strPrice);
 
                         }
                         placeOrderAdapter.notifyDataSetChanged();
@@ -201,5 +210,115 @@ public class PaymentMethodFragment extends Fragment {
         });
         builder.show();
     }
+
+    public void customActionBar() {
+        android.support.v7.app.ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        mActionBar.setDisplayHomeAsUpEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(getActivity());
+        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+        TextView tvTitle = mCustomView.findViewById(R.id.title);
+        final ImageView ivFilter = mCustomView.findViewById(R.id.iv_filter);
+        ivFilter.setVisibility(View.VISIBLE);
+
+        ivFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDropDownMenu(ivFilter);
+            }
+        });
+        tvTitle.setText("Customer Order");
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+        mActionBar.show();
+
+    }
+
+    private void showDropDownMenu(ImageView filter) {
+
+        PopupMenu popup = new PopupMenu(getActivity(), filter);
+        popup.getMenuInflater()
+                .inflate(R.menu.currencies, popup.getMenu());
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.dollar:
+                        convertCurrency("ZAR_USD", "usd");
+                        totalPrice = 0;
+                        break;
+                    case R.id.rand:
+                        convertCurrency("ZAR_ZAR", "zar");
+                        totalPrice = 0;
+                        break;
+                    case R.id.pound:
+                        convertCurrency("ZAR_GBP", "pound");
+                        totalPrice = 0;
+                        break;
+                    case R.id.euro:
+                        convertCurrency("ZAR_EUR", "euro");
+                        totalPrice = 0;
+                        break;
+                    case R.id.pula:
+                        convertCurrency("ZAR_BWP", "pula");
+                        totalPrice = 0;
+                        break;
+                }
+                return true;
+            }
+        });
+
+        popup.show();
+    }
+
+    private void convertCurrency(String currency, String name) {
+        alertDialog = AlertUtils.createProgressDialog(getActivity());
+        alertDialog.show();
+        GeneralUtils.putStringValueInEditor(getActivity(), "currency", name);
+        apiCallCurrency(currency);
+    }
+
+    private void apiCallCurrency(final String currency) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.CurrencyConverterUrl + currency + "&compact=y&apiKey=" + Config.CurrencyToken
+                , new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    alertDialog.dismiss();
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONObject object = jsonObject.getJSONObject(currency);
+                    strCurrency = object.getString("val");
+                    GeneralUtils.putStringValueInEditor(getActivity(), "converted_currency", strCurrency);
+                    placeOrderAdapter.notifyDataSetChanged();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                alertDialog.dismiss();
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                return headers;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+    }
+
 
 }

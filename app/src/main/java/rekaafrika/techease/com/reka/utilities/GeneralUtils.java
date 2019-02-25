@@ -90,6 +90,10 @@ public class GeneralUtils {
         return getSharedPreferences(context).getString("currency", "zar");
     }
 
+    public static String getConvertedCurrency(Context context) {
+        return getSharedPreferences(context).getString("converted_currency", "1");
+    }
+
     public static String getItemPrice(Context context) {
         return getSharedPreferences(context).getString("item_price", "zar");
     }

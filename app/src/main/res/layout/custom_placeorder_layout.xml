@@ -5,13 +5,23 @@
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="300sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"
         android:maxLines="1"
         android:layout_centerVertical="true"
         android:fontFamily="@font/regular"
-        android:layout_marginLeft="10sp"/>
+        android:layout_toLeftOf="@id/iv_symbol"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="5sp"/>
+
+    <ImageView
+        android:id="@+id/iv_symbol"
+        android:layout_width="18sp"
+        android:layout_height="18sp"
+        android:src="@drawable/rand"
+        android:layout_toLeftOf="@id/tv_price"
+        android:layout_centerVertical="true"/>
 
     <TextView
         android:id="@+id/tv_price"
