@@ -15,29 +15,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac14a12d-7382-4d3c-a794-3dbab4bc993e" name="Default" comment="slider done">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PriceFilterFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dollar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/euro.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pound.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pula.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_price_filter.xml" afterDir="false" />
+    <list default="true" id="ac14a12d-7382-4d3c-a794-3dbab4bc993e" name="Default" comment="bug fixed">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/filter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/currencies.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/utilities/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/utilities/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/utilities/GeneralUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/utilities/GeneralUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_product_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_product_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_product_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_product_details.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_actionbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_actionbar.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,27 +50,27 @@
     <session id="-489331123">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="52" />
+          <entry key="project.closed" value="53" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="28" />
           <entry key="project.open.time.10" value="5" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.2" value="5" />
+          <entry key="project.open.time.2" value="6" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="53" />
+          <entry key="project.opened" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="3" />
           <entry key="gradle" value="20" />
-          <entry key="java" value="442" />
+          <entry key="java" value="446" />
           <entry key="png" value="2" />
-          <entry key="xml" value="201" />
+          <entry key="xml" value="204" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -89,25 +78,25 @@
           <entry key="CLASS" value="3" />
           <entry key="Groovy" value="20" />
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="442" />
-          <entry key="XML" value="201" />
+          <entry key="JAVA" value="446" />
+          <entry key="XML" value="204" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="10" />
           <entry key="gradle" value="57" />
-          <entry key="java" value="19481" />
-          <entry key="txt" value="291" />
-          <entry key="xml" value="5370" />
+          <entry key="java" value="19687" />
+          <entry key="txt" value="332" />
+          <entry key="xml" value="5524" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="57" />
-          <entry key="JAVA" value="19481" />
-          <entry key="PLAIN_TEXT" value="301" />
-          <entry key="XML" value="5370" />
+          <entry key="JAVA" value="19687" />
+          <entry key="PLAIN_TEXT" value="342" />
+          <entry key="XML" value="5524" />
         </counts>
       </usages-collector>
     </session>
@@ -117,27 +106,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="67" column="59" selection-start-line="67" selection-start-column="59" selection-end-line="67" selection-end-column="59" />
+            <state relative-caret-position="887">
+              <caret line="121" column="8" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="180" column="116" selection-start-line="180" selection-start-column="116" selection-end-line="180" selection-end-column="116" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_product_details.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="212" column="56" selection-start-line="212" selection-start-column="56" selection-end-line="212" selection-end-column="56" />
+            <state relative-caret-position="2213">
+              <caret line="192" column="90" selection-start-line="192" selection-start-column="86" selection-end-line="192" selection-end-column="90" />
+              <folding>
+                <element signature="e#5759#5908#0" expanded="true" />
+                <element signature="e#5907#5908#0" expanded="true" />
+                <element signature="e#6228#6906#0" expanded="true" />
+                <element signature="e#6905#6906#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,11 +132,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="valueResourceFile" />
         <option value="Interface" />
         <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -2426,8 +2411,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CreateCustomerFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ShippingAddressFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_shipping_address.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/interfaces/LoginInterfaces.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/interfaces/LoginInterface.java" />
@@ -2468,15 +2451,17 @@
         <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CategoriesFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_categories.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/utilities/Config.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_price_filter.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/utilities/GeneralUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PriceFilterFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_product_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_product_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_actionbar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/currencies.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductsFragment.java" />
       </list>
     </option>
   </component>
@@ -2489,6 +2474,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2539,7 +2527,7 @@
               <item name="techease" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="reka" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="adapters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RekaAfrika_App" type="1abcf292:AndroidViewProjectNode" />
@@ -2550,19 +2538,15 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="reka" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Fil&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PriceFilterFragment.java&#10;Na&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/activities/NavigationDrawerActivity.java&#10;AD&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Add&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Customer&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Cu&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Mai&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/rekaafrika/views/activities/MainActivity.java&#10;Ad&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Gen&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/utilities/GeneralUtils.java&#10;cus&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Log&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/LoginFragment.java&#10;Cus&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;OrderCo&#9;PSI&#9;JAVA://rekaafrika.techease.com.reka.views.fragments.OrderCompletionFragment&#10;Order&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/OrderCompletionFragment.java&#10;Cust&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Naviga&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/activity_navigation_drawer.xml&#10;Fra&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PaymentMethodFragment.java&#10;aD&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Pay&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PaymentMethodFragment.java&#10;Lo&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/LoginFragment.java&#10;Productd&#9;PSI&#9;JAVA://rekaafrika.techease.com.reka.views.fragments.ProductDetailsFragment&#10;HOm&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/rekaafrika/views/fragments/HomeFragment.java&#10;Co&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/utilities/Config.java&#10;Ada&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/CartAdapter.java&#10;Con&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/utilities/Config.java&#10;Pa&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/activities/PaypalPaymentActivity.java&#10;Pr&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/custom_product_layout.xml&#10;color&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;na&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/menu/navigation_drawer.xml&#10;sp&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/activity_splash.xml&#10;Cr&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/helpers/ShopCrud.java&#10;co&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;NA&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/activities/NavigationDrawerActivity.java&#10;colo&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;Cre&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CreateCustomerFragment.java&#10;CRE&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CreateCustomerFragment.java&#10;PR&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java&#10;col&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;ite&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java&#10;sh&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/fragment_shipping_address.xml&#10;Shi&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ShippingAddressFragment.java&#10;C&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CreateCustomerFragment.java&#10;add&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/fragment_add_cart.xml&#10;car&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;CartA&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/CartAdapter.java&#10;Ca&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/fragment_categories.xml&#10;PRod&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java&#10;Prod&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java&#10;Pro&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java&#10;create&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/fragment_create_customer.xml" />
+    <property name="SearchEverywhereHistoryKey" value="Filte&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PriceFilterFragment.java&#10;Fil&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PriceFilterFragment.java&#10;Na&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/activities/NavigationDrawerActivity.java&#10;AD&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Add&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Customer&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Cu&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Mai&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/rekaafrika/views/activities/MainActivity.java&#10;Ad&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Gen&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/utilities/GeneralUtils.java&#10;cus&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Log&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/LoginFragment.java&#10;Cus&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;OrderCo&#9;PSI&#9;JAVA://rekaafrika.techease.com.reka.views.fragments.OrderCompletionFragment&#10;Order&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/OrderCompletionFragment.java&#10;Cust&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CustomerOrderFragment.java&#10;Naviga&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/activity_navigation_drawer.xml&#10;Fra&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PaymentMethodFragment.java&#10;aD&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;Pay&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PaymentMethodFragment.java&#10;Lo&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/LoginFragment.java&#10;Productd&#9;PSI&#9;JAVA://rekaafrika.techease.com.reka.views.fragments.ProductDetailsFragment&#10;HOm&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/rekaafrika/views/fragments/HomeFragment.java&#10;Co&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/utilities/Config.java&#10;Ada&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/CartAdapter.java&#10;Con&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/utilities/Config.java&#10;Pa&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/activities/PaypalPaymentActivity.java&#10;Pr&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/custom_product_layout.xml&#10;color&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;na&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/menu/navigation_drawer.xml&#10;sp&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/activity_splash.xml&#10;Cr&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/helpers/ShopCrud.java&#10;co&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;NA&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/activities/NavigationDrawerActivity.java&#10;colo&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;Cre&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CreateCustomerFragment.java&#10;CRE&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CreateCustomerFragment.java&#10;PR&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java&#10;col&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/values/colors.xml&#10;ite&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java&#10;sh&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/fragment_shipping_address.xml&#10;Shi&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ShippingAddressFragment.java&#10;C&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/CreateCustomerFragment.java&#10;add&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/fragment_add_cart.xml&#10;car&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/AddCartFragment.java&#10;CartA&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/adapters/CartAdapter.java&#10;Ca&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/res/layout/fragment_categories.xml&#10;PRod&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java&#10;Prod&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java&#10;Pro&#9;FILE&#9;file:///Users/eapple/Documents/GitHub/RekaAfrika_App/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductDetailsFragment.java" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -2834,7 +2818,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550862106515</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="mutiple currencies added">
+      <created>1551028604397</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1551028604397</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2848,9 +2839,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="748" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15228014" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21416938" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -2865,7 +2855,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3296875" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.31191224" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.31083202" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Logcat" order="10" weight="0.32630098" />
@@ -2936,7 +2926,9 @@
     <MESSAGE value="other payment integrated" />
     <MESSAGE value="payment work done" />
     <MESSAGE value="slider done" />
-    <option name="LAST_COMMIT_MESSAGE" value="slider done" />
+    <MESSAGE value="mutiple currencies added" />
+    <MESSAGE value="bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixed" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -2988,10 +2980,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/cart.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/activities/PaymentActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_paypal_payment.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -3131,12 +3119,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/activities/SplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3260,13 +3248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="83" column="92" selection-start-line="83" selection-start-column="92" selection-end-line="83" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_price_filter.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -3282,20 +3263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PriceFilterFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_product_layout.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -3304,17 +3271,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="67" column="59" selection-start-line="67" selection-start-column="59" selection-end-line="67" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_product_details.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
+        <state relative-caret-position="3180">
           <caret line="212" column="56" selection-start-line="212" selection-start-column="56" selection-end-line="212" selection-end-column="56" />
         </state>
       </provider>
@@ -3323,6 +3283,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="180" column="116" selection-start-line="180" selection-start-column="116" selection-end-line="180" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/CategoryItemAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="74" column="14" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/PriceFilterFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="106" column="40" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_actionbar.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/currencies.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/adapters/ProductAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="887">
+          <caret line="121" column="8" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/rekaafrika/techease/com/reka/views/fragments/ProductsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2213">
+          <caret line="192" column="90" selection-start-line="192" selection-start-column="86" selection-end-line="192" selection-end-column="90" />
+          <folding>
+            <element signature="e#5759#5908#0" expanded="true" />
+            <element signature="e#5907#5908#0" expanded="true" />
+            <element signature="e#6228#6906#0" expanded="true" />
+            <element signature="e#6905#6906#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

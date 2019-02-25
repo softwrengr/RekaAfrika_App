@@ -73,7 +73,6 @@ public class CategoryItemAdapter   extends BaseAdapter {
             viewHolder.ivItem.setImageDrawable(context.getResources().getDrawable(R.drawable.placeholder));
         }
         else {
-         //   Picasso.get().load(model.getImage()).into(viewHolder.ivItem);
             Glide.with(context).load(model.getImage()).into(viewHolder.ivItem);
         }
 
@@ -81,7 +80,7 @@ public class CategoryItemAdapter   extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 GeneralUtils.putStringValueInEditor(context,"slug",model.getSlug());
-                GeneralUtils.connectDrawerFragmentWithBack(context,new PriceFilterFragment());
+                GeneralUtils.connectDrawerFragmentWithBack(context,new ProductsFragment());
             }
         });
 

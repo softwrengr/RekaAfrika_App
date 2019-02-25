@@ -5,9 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +46,7 @@ public class ProductsFragment extends Fragment {
     ArrayList<AllProductsModel> productsModelArrayList;
     ProductAdapter productAdapter;
     public static ArrayList<String> arrayList = new ArrayList<>();
+    String strCurrency="1";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,12 +64,12 @@ public class ProductsFragment extends Fragment {
         productsModelArrayList = new ArrayList<>();
         alertDialog = AlertUtils.createProgressDialog(getActivity());
         alertDialog.show();
-        getLiveRates();
+        apiCallGetProducts();
 
     }
 
 
-    private void getLiveRates() {
+    private void apiCallGetProducts() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.CATEGORY_PRODUCT
                 , new com.android.volley.Response.Listener<String>() {
             @Override
@@ -83,14 +87,12 @@ public class ProductsFragment extends Fragment {
                         String strPrice = itemObject.getString("price");
                         String strImage = itemObject.getString("image");
 
-                        float currency = Float.parseFloat(strPrice)*Float.parseFloat(PriceFilterFragment.strCurrency);
+                        float currency = Float.parseFloat(strPrice)*Float.parseFloat(strCurrency);
 
                         model.setProduct_id(strProductID);
                         model.setTitle(strTitle);
                         model.setPrice(String.valueOf(currency));
                         model.setImage(strImage);
-
-
 
                         productsModelArrayList.add(model);
                         ProductAdapter productAdapter;
@@ -98,7 +100,6 @@ public class ProductsFragment extends Fragment {
                         gvProducts.setAdapter(productAdapter);
                         productAdapter.notifyDataSetChanged();
                     }
-
 
 
                 } catch (JSONException e) {
@@ -138,11 +139,107 @@ public class ProductsFragment extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView tvTitle = mCustomView.findViewById(R.id.title);
+        final ImageView ivFilter = mCustomView.findViewById(R.id.iv_filter);
+        ivFilter.setVisibility(View.VISIBLE);
+
+        ivFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             showDropDownMenu(ivFilter);
+            }
+        });
         tvTitle.setText("Products");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
         mActionBar.show();
 
+    }
+
+    private void showDropDownMenu(ImageView filter) {
+
+        PopupMenu popup = new PopupMenu(getActivity(), filter);
+        popup.getMenuInflater()
+                .inflate(R.menu.currencies, popup.getMenu());
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.dollar:
+                        alertDialog = AlertUtils.createProgressDialog(getActivity());
+                        alertDialog.show();
+                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","usd");
+                        apiCallCurrency("ZAR_USD");
+                        break;
+                    case R.id.rand:
+                        alertDialog = AlertUtils.createProgressDialog(getActivity());
+                        alertDialog.show();
+                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","rand");
+                        apiCallCurrency("ZAR_ZAR");
+                        break;
+                    case R.id.pound:
+                        alertDialog = AlertUtils.createProgressDialog(getActivity());
+                        alertDialog.show();
+                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","pound");
+                        apiCallCurrency("ZAR_GBP");
+                        break;
+                    case R.id.euro:
+                        alertDialog = AlertUtils.createProgressDialog(getActivity());
+                        alertDialog.show();
+                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","euro");
+                        apiCallCurrency("ZAR_EUR");
+                        break;
+                    case R.id.pula:
+                        alertDialog = AlertUtils.createProgressDialog(getActivity());
+                        alertDialog.show();
+                        GeneralUtils.putStringValueInEditor(getActivity(),"currency","pula");
+                        apiCallCurrency("ZAR_BWP");
+                        break;
+                }
+                return true;
+            }
+        });
+
+        popup.show();
+    }
+
+    private void apiCallCurrency(final String currency) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config.CurrencyConverterUrl + currency + "&compact=y&apiKey=" + Config.CurrencyToken
+                , new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    alertDialog.dismiss();
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONObject object = jsonObject.getJSONObject(currency);
+                    strCurrency = object.getString("val");
+                    initUI();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                alertDialog.dismiss();
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                return headers;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
     }
 }
 

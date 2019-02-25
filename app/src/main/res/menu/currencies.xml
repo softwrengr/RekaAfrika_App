@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dollar"
+        android:icon="@drawable/dollar"
+        android:title="Dollar"/>
+
+    <item
+        android:id="@+id/rand"
+        android:icon="@drawable/rand"
+        android:title="Rand ZAR"/>
+
+    <item
+        android:id="@+id/pound"
+        android:icon="@drawable/pound"
+        android:title="Pound"/>
+
+    <item
+        android:id="@+id/euro"
+        android:icon="@drawable/euro"
+        android:title="Euro"/>
+
+    <item
+        android:id="@+id/pula"
+        android:icon="@drawable/pula"
+        android:title="Pula"/>
+</menu>
