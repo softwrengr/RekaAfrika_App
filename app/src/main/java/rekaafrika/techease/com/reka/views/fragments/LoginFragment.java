@@ -90,7 +90,6 @@ public class LoginFragment extends Fragment {
             public void onResponse(String response) {
                 alertDialog.dismiss();
                 if (response == null) {
-
                     Toast.makeText(getActivity(), "you got some error please try again later", Toast.LENGTH_SHORT).show();
                 } else if (response.contains("true")) {
 

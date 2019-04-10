@@ -5,8 +5,6 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/styleabletoast-2.1.2.aar/a6cd7a0171d81f80bcbfbdd8cfe8f1a7/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.muddzdev/styleabletoast/2.1.2/17267a5777dc311c192b9a4c1ca9138486e59844/styleabletoast-2.1.2-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

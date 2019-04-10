@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -221,8 +222,28 @@ public class CategoriesFragment extends Fragment {
 
         for (String name : url_images.keySet()) {
             DefaultSliderView sliderView = new DefaultSliderView(getActivity());
+            switch (name) {
+                case "1":
+                    sliderView.setDescription("WELCOME TO REKA AFRIKA");
+                    break;
+                case "2":
+                    sliderView.setDescription("MADE WITH LOVE FROM AFRICA");
+                    break;
+                case "3":
+                    sliderView.setDescription("ALL OUR BOOKS");
+                    break;
+                case "4":
+                    sliderView.setDescription("BECOME OUR VENDOR");
+                    break;
+                case "5":
+                    sliderView.setDescription("AFRICA TO THE WORLD");
+                    break;
+            }
+            sliderView.setDescriptionTextSize(16);
+            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
             sliderView.setImageUrl(url_images.get(name));
             sliderLayout.addSliderView(sliderView);
         }
+
     }
 }

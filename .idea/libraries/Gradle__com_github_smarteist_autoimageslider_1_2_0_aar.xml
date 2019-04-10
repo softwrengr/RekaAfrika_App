@@ -5,8 +5,6 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/autoimageslider-1.2.0.aar/bb2046ad055032301fc13a341c174b6f/res" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.smarteist/autoimageslider/1.2.0/51391b6628c7d0f4022b1dbcff899382d8a094fa/autoimageslider-1.2.0-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

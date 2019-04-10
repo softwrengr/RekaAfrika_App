@@ -5,8 +5,6 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-sdk-5.5.1.aar/413b54119e8bc04ffa253633fdb4a94e/res" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.card/android-sdk/5.5.1/465a90c304124088e868b4e24fae629ce5907736/android-sdk-5.5.1-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
